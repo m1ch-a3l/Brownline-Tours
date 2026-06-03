@@ -1,0 +1,1266 @@
+// ============================================================
+// SAMPLE DATA — Ghana Tours, Testimonials, Team, Blog Posts
+// ============================================================
+
+export interface MealPlan {
+  breakfast: boolean;
+  lunch: boolean;
+  dinner: boolean;
+  snacks: boolean;
+  note?: string;
+}
+
+export interface Restaurant {
+  name: string;
+  cuisine: string;
+  priceRange: '$' | '$$' | '$$$' | '$$$$';
+  specialty: string;
+  address: string;
+  mustTry: string;
+}
+
+export interface FoodAddOn {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  perPerson: boolean;
+  icon: string;
+}
+
+export interface Tour {
+  id: string;
+  title: string;
+  slug: string;
+  location: string;
+  country: string;
+  category: string;
+  price: number;
+  childPrice: number;
+  groupPrice: number;
+  duration: string;
+  durationDays: number;
+  rating: number;
+  reviewCount: number;
+  maxGuests: number;
+  image: string;
+  gallery: string[];
+  description: string;
+  highlights: string[];
+  included: string[];
+  excluded: string[];
+  itinerary: { day: number; title: string; description: string; meals?: string[] }[];
+  region: string;
+  badge?: 'Popular' | 'New' | 'Sale' | 'Top Rated';
+  discount?: number;
+  difficulty: 'Easy' | 'Moderate' | 'Challenging';
+  tags: string[];
+  mealPlan?: MealPlan;
+  restaurants?: Restaurant[];
+  foodAddOns?: FoodAddOn[];
+  cuisineHighlights?: string[];
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  location: string;
+  avatar: string;
+  rating: number;
+  comment: string;
+  tourName: string;
+  date: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  social: { twitter?: string; instagram?: string; linkedin?: string };
+}
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  category: string;
+  author: string;
+  authorAvatar: string;
+  date: string;
+  readTime: string;
+  tags: string[];
+}
+
+export interface Booking {
+  id: string;
+  tourId: string;
+  tourTitle: string;
+  tourImage: string;
+  name: string;
+  email: string;
+  phone: string;
+  adults: number;
+  children: number;
+  date: string;
+  totalPrice: number;
+  status: 'Confirmed' | 'Pending' | 'Cancelled';
+  specialRequests?: string;
+  createdAt: string;
+}
+
+// ─── TOURS ────────────────────────────────────────────────────
+
+export const tours: Tour[] = [
+  {
+    id: "t1",
+    title: "Mole National Park Safari",
+    slug: "mole-national-park-safari",
+    location: "Mole, Northern Region",
+    country: "Ghana",
+    category: "Safari",
+    price: 799,
+    childPrice: 499,
+    groupPrice: 699,
+    duration: "5 Days",
+    durationDays: 5,
+    rating: 4.8,
+    reviewCount: 156,
+    maxGuests: 12,
+    image: "/tourist_site/Mole/mole-national-park-is.jpg",
+    gallery: [
+      "/tourist_site/Mole/mole-national-park-is.jpg",
+      "/tourist_site/Mole/safari-guided-tours-at.jpg",
+      "/tourist_site/Mole/it-s-interesting-for.jpg",
+      "/tourist_site/Mole/caption.jpg",
+      "/tourist_site/Mole/photo2jpg.jpg",
+    ],
+    description: "Discover Ghana's premier wildlife sanctuary in the lush savanna of the Northern Region. Mole National Park is home to West Africa's largest population of African elephants, alongside hippos, warthogs, baboons, and over 300 bird species. Our expert local rangers lead both vehicle and foot safaris — a rare and thrilling experience found almost nowhere else in West Africa.",
+    highlights: [
+      "Walking safari alongside wild African elephants",
+      "Vehicle game drives at dawn and dusk",
+      "Hippo spotting at Mole Motel waterhole",
+      "Over 300 bird species including rare hornbills",
+      "Larabanga Mosque — one of West Africa's oldest mosques",
+      "Paga Crocodile Pond — sit alongside sacred crocodiles",
+    ],
+    included: [
+      "All safari game drives and walking tours",
+      "Lodge accommodation (4 nights)",
+      "All meals (breakfast, lunch, dinner)",
+      "National park entrance fees",
+      "Experienced certified wildlife ranger guide",
+      "Airport/bus transfers from Tamale",
+      "4x4 safari vehicle",
+    ],
+    excluded: [
+      "Flights to Tamale or bus from Accra",
+      "Travel insurance",
+      "Tips and gratuities",
+      "Personal shopping",
+      "Alcoholic beverages",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival in Tamale — Gateway to the North", description: "Arrive in Tamale. Transfer to Mole (approx. 3 hours). Check in at the lodge, enjoy a welcome dinner and evening orientation briefing from your ranger." },
+      { day: 2, title: "Dawn Walking Safari", description: "Pre-dawn start for the famous walking safari. Encounter elephants, warthogs, and kob antelopes on foot with your armed ranger. Afternoon vehicle game drive." },
+      { day: 3, title: "Full-Day Game Drive — Elephant Territory", description: "Early morning and late afternoon game drives covering the park's southern circuits. Best chance to observe elephant herds, baboon troops, and a wide variety of birds." },
+      { day: 4, title: "Larabanga Mosque & Paga Crocodile Pond", description: "Morning game drive. Afternoon visit to Larabanga Mosque — a 14th-century mud-brick Sahelian masterpiece, one of the oldest mosques in West Africa. Drive north to Paga Crocodile Pond, where sacred crocodiles have co-existed peacefully with the community for generations — you can touch, and even sit on, these ancient reptiles." },
+      { day: 5, title: "Waterhole Sunrise & Departure", description: "Final sunrise game drive at the famous waterhole where elephants congregate. Late morning transfer back to Tamale for onward travel." },
+    ],
+    region: "Northern Ghana",
+    badge: "Popular",
+    difficulty: "Easy",
+    tags: ["safari", "wildlife", "elephants", "ghana", "nature", "northern ghana"],
+  },
+  {
+    id: "t2",
+    title: "Kakum Canopy Walk & Cape Coast Heritage",
+    slug: "kakum-canopy-walk-cape-coast",
+    location: "Cape Coast, Central Region",
+    country: "Ghana",
+    category: "Adventure",
+    price: 549,
+    childPrice: 349,
+    groupPrice: 479,
+    duration: "4 Days",
+    durationDays: 4,
+    rating: 4.9,
+    reviewCount: 203,
+    maxGuests: 14,
+    image: "/tourist_site/Kakum/caption (1).jpg",
+    gallery: [
+      "/tourist_site/Kakum/caption (1).jpg",
+      "/tourist_site/Kakum/caption (2).jpg",
+      "/tourist_site/Kakum/5IDolEB25oOn_WMGlXVWWCzNQZSYDC0Zxd6GI-Tq1yMBG2Q1NzP9U5GlOv-sCj3sfu5bSve2vuR00mnZees-pQ7kKo-IMIiN3N6TmFLhkqioWIyuMM1gkMn-zs0fSQtVGU8NZ0wZc5y0Yuttiw4Cf7cadWHh3_0awYGnBhUIUkCsEGQwkw8pahj_AFn1LmRG.jpg",
+      "/tourist_site/Kakum/SM2s4svHjeJ2oifHfwzBO7Ke--Kw_wdrwYalyzSMWQWQhap93252Uzzb1IxZOHfXax4ws4phIdzqCY85RxSihujXSphcgXWuDk8wmrFy8u6SxwLPBwczdPKUr--VmOc5fXmf2Kq7KpNDv6E4hJ43KhvsFCLUlx6q-mP1TYh_0YyI-FNqFZ6gx91f3G4LTy2_.jpg",
+      "/tourist_site/Kakum/zVEJLRhoeWA_BdafSPCDGokrtA-sGjAvBTWRiizCUEQ6GLFfIof1ISMXvcRg43ATmPnH_EGGQtyUIBK8Uq7CKI-vhyGFWpF7-v-5R4Flzo6I4zAiovQlvFQHzZ6j1kS3SWiIVBJIKwE3vVCh8j4hHv5WB3LmPj2vKisKBJR5K8KduphFThEFA5A1174PQxXW.jpg",
+      "/tourist_site/Kakum/caption (4).jpg",
+      "/tourist_site/Kakum/caption (5).jpg",
+      "/tourist_site/Kakum/caption.jpg",
+      "/tourist_site/Kakum/great-experience-with.jpg",
+    ],
+    description: "Walk above a primeval rainforest and stand at a doorway that changed history. Kakum National Park's seven-bridge canopy walkway — suspended 40 metres above the forest floor — is one of only a handful in the world. Combined with a moving tour of Cape Coast Castle, a UNESCO World Heritage Site, this is Ghana's most iconic experience.",
+    highlights: [
+      "Seven-bridge suspended canopy walkway (40m high)",
+      "Cape Coast Castle guided heritage tour",
+      "Walk through the 'Door of No Return'",
+      "Assin Manso Slave River — the last resting place before the coast",
+      "Authentic Cape Coast seafood dinner",
+      "Sunset at the castle ramparts over the Atlantic",
+    ],
+    included: [
+      "Hotel accommodation (3 nights) in Cape Coast",
+      "Daily breakfast + 2 dinners",
+      "Kakum canopy walk entrance and guide",
+      "Cape Coast Castle tour with historian guide",
+      "All transfers from Accra and return",
+      "Air-conditioned transport",
+    ],
+    excluded: [
+      "Flights or travel to Accra",
+      "Travel insurance",
+      "Lunches",
+      "Personal expenses",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra to Cape Coast", description: "Depart Accra. Scenic 3-hour coastal drive west. Check in and explore Cape Coast town. Evening walk along the beachfront." },
+      { day: 2, title: "Kakum National Park — Canopy Walk", description: "Early morning drive to Kakum. Guided forest walk and the famous seven-bridge suspended walkway high above the treetops. Spot rare hornbills and forest butterflies. Return for lunch in Cape Coast." },
+      { day: 3, title: "Assin Manso, Cape Coast & Elmina Castles", description: "Morning drive to Assin Manso Slave River — the sacred 'Last Bath' site where enslaved Africans rested before the final march to the coast. A ceremony of remembrance at the riverside. Continue to Cape Coast Castle for a full UNESCO heritage tour: dungeons, condemned cell, and the Door of No Return. Afternoon tour of Elmina Castle (1482)." },
+      { day: 4, title: "Coastal Village & Return to Accra", description: "Morning visit to a traditional fishing village to watch the daily catch. Farewell breakfast before the drive back to Accra." },
+    ],
+    region: "Central Region",
+    badge: "Top Rated",
+    difficulty: "Moderate",
+    tags: ["canopy walk", "heritage", "history", "rainforest", "cape coast", "central ghana"],
+  },
+  {
+    id: "t3",
+    title: "Volta Region Waterfalls & Afadjato Trek",
+    slug: "volta-waterfalls-afadjato-trek",
+    location: "Ho & Hohoe, Volta Region",
+    country: "Ghana",
+    category: "Adventure",
+    price: 649,
+    childPrice: 429,
+    groupPrice: 579,
+    duration: "5 Days",
+    durationDays: 5,
+    rating: 4.7,
+    reviewCount: 128,
+    maxGuests: 10,
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=800&q=80",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+      "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+    ],
+    description: "The Volta Region is Ghana's green heart — a land of misty highlands, cascading waterfalls, and lush tropical forests. Trek to the thundering Wli Falls, the highest waterfall in West Africa. Summit Mount Afadjato, Ghana's highest peak at 885m, for panoramic views across the Volta plains. Journey by ferry across Lake Volta, one of the world's largest man-made lakes.",
+    highlights: [
+      "Wli Falls — highest waterfall in West Africa (80m)",
+      "Summit Mount Afadjato (885m — Ghana's highest peak)",
+      "Mount Gemi — sacred hilltop with panoramic Volta views",
+      "Tafi Monkey Sanctuary — walk among wild mona monkeys",
+      "Boti Falls and the Umbrella Rock formation",
+      "Lake Volta ferry crossing",
+    ],
+    included: [
+      "Guesthouse and eco-lodge accommodation (4 nights)",
+      "All meals during trekking days",
+      "Licensed mountain guide",
+      "National park and waterfall entrance fees",
+      "Lake Volta ferry ticket",
+      "Transfers from Ho",
+    ],
+    excluded: [
+      "Travel to/from Ho (bus from Accra available)",
+      "Travel insurance",
+      "Personal trekking gear",
+      "Tips for guides and porters",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra to Ho — Gateway to the Volta", description: "3.5-hour bus or private transfer to Ho. Check in. Evening walk through Ho town centre and briefing with your mountain guide." },
+      { day: 2, title: "Wli Falls — West Africa's Highest Waterfall", description: "Drive to Hohoe. Guided jungle trek to Wli Upper Falls (2.5 hours through forest, river crossings). Swim in the natural pool beneath the 80m falls. Camp overnight near the falls." },
+      { day: 3, title: "Mount Afadjato & Mount Gemi", description: "Early start for Afadjato (885m) — Ghana's highest peak. 2-hour ascent through forested slopes and open grassland with panoramic views stretching into Togo. Afternoon hike to sacred Mount Gemi, a neighbouring peak revered by the local community, with sweeping views across the Volta Region. Transfer to eco-lodge at dusk." },
+      { day: 4, title: "Tafi Atome Monkey Sanctuary & Boti Falls", description: "Morning visit to Tafi Atome — feed and walk among wild mona monkeys. Afternoon hike to Boti Falls and the curious Umbrella Rock (twin falls merge under an umbrella-shaped rock). Ewe village dinner." },
+      { day: 5, title: "Lake Volta Ferry & Return", description: "Morning ferry crossing on Lake Volta — one of the world's largest artificial lakes. Arrive in Kpando for lunch before transfer back to Accra." },
+    ],
+    region: "Volta Region",
+    badge: "Popular",
+    difficulty: "Challenging",
+    tags: ["trekking", "waterfalls", "hiking", "volta", "nature", "mountains"],
+  },
+  {
+    id: "t4",
+    title: "Ada Foah Beach & Volta Estuary Retreat",
+    slug: "ada-foah-beach-estuary-retreat",
+    location: "Ada Foah, Greater Accra Region",
+    country: "Ghana",
+    category: "Beach",
+    price: 399,
+    childPrice: 249,
+    groupPrice: 349,
+    duration: "3 Days",
+    durationDays: 3,
+    rating: 4.6,
+    reviewCount: 89,
+    maxGuests: 16,
+    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+      "https://images.unsplash.com/photo-1509233725247-49e657c54213?w=800&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80",
+    ],
+    description: "Where the mighty Volta River meets the Atlantic Ocean lies Ada Foah — a pristine beach paradise just 100km from Accra. Explore the Volta estuary by dugout canoe, watch fishermen haul in their nets at sunrise, sunbathe on deserted sandbars, and enjoy a sunset cruise as the river turns gold. The perfect Ghanaian escape from the capital.",
+    highlights: [
+      "Sunrise dugout canoe ride on the Volta estuary",
+      "Sandbar day trip — deserted beach all to yourself",
+      "Volta River sunset cruise with local fishermen",
+      "Village fishing community visit",
+      "Fresh grilled tilapia feast on the beach",
+      "Beach bonfires under a sky full of stars",
+    ],
+    included: [
+      "Beach resort accommodation (2 nights)",
+      "Daily breakfast + 1 group dinner",
+      "Estuary boat safari",
+      "Sandbar trip and canoe ride",
+      "All transfers from Accra and return",
+    ],
+    excluded: [
+      "Flights to Accra",
+      "Travel insurance",
+      "Extra meals and beverages",
+      "Personal spending",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra to Ada Foah", description: "Morning departure from Accra (approx. 2 hours). Check in to the beach resort. Afternoon at leisure on the beach. Sunset cruise on the Volta estuary, cocktails on deck." },
+      { day: 2, title: "Sandbar Day & Estuary Safari", description: "Sunrise canoe ride through the estuary. Boat trip to deserted sandbars for a full day of swimming and relaxation. Afternoon village tour. Evening group dinner of fresh grilled tilapia and kelewele." },
+      { day: 3, title: "Fishing Village & Return", description: "Early morning with local fishermen, watching the traditional net-hauling. Late breakfast. Return to Accra by mid-afternoon." },
+    ],
+    region: "Greater Accra",
+    badge: "New",
+    difficulty: "Easy",
+    tags: ["beach", "river", "canoe", "ada", "relaxation", "greater accra"],
+  },
+  {
+    id: "t5",
+    title: "Kumasi & Ashanti Kingdom Cultural Tour",
+    slug: "kumasi-ashanti-kingdom-cultural-tour",
+    location: "Kumasi, Ashanti Region",
+    country: "Ghana",
+    category: "Cultural",
+    price: 499,
+    childPrice: 329,
+    groupPrice: 449,
+    duration: "4 Days",
+    durationDays: 4,
+    rating: 4.8,
+    reviewCount: 174,
+    maxGuests: 12,
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80",
+      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+    ],
+    description: "Kumasi, the Garden City, is the proud seat of the Ashanti Kingdom — one of the most powerful empires in African history. Walk through the world's largest open-air market, visit the Manhyia Palace where the Asantehene resides, watch master weavers create magnificent kente cloth in Bonwire, and experience the deep spiritual culture of the Ashanti people.",
+    highlights: [
+      "Manhyia Palace Museum — seat of the Ashanti Kingdom",
+      "Kejetia Market — largest open-air market in West Africa",
+      "Bonwire Kente Weaving Village — watch masters at the loom",
+      "Okomfo Anokye Sword Site — the legendary immovable sacred sword",
+      "Kumasi Cultural Centre — traditional crafts and performance",
+      "Traditional Ashanti welcome ceremony",
+    ],
+    included: [
+      "Hotel accommodation in Kumasi (3 nights)",
+      "Daily breakfast + 2 group dinners",
+      "Manhyia Palace and Cultural Centre entry",
+      "Bonwire village kente weaving experience",
+      "Local cultural guide (certified Ashanti culture expert)",
+      "Transfers from Accra and return",
+    ],
+    excluded: [
+      "Flights or travel to Accra",
+      "Travel insurance",
+      "Kente fabric purchases (market visits)",
+      "Tips",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra to Kumasi — The Garden City", description: "4-hour drive to Kumasi. Check in and afternoon visit to Kumasi Cultural Centre. Traditional Ashanti dance performance in the evening." },
+      { day: 2, title: "Kejetia Market, Manhyia Palace & Okomfo Anokye", description: "Morning immersion in Kejetia Market — a sensory feast of fabrics, spices, and fresh produce. Afternoon guided tour of Manhyia Palace Museum, residence of the Asantehene. Evening visit to the Okomfo Anokye Sword Site — where the sacred sword, thrust into the earth by the legendary Ashanti priest, stands as a symbol of the kingdom's spiritual power that no mortal has been able to remove." },
+      { day: 3, title: "Bonwire Kente Village & Craft Village", description: "Drive to Bonwire — the historic home of kente weaving. Watch master weavers at traditional strip looms, hear the history of each pattern's meaning. Try your hand at the loom. Visit the Ashanti Craft Village." },
+      { day: 4, title: "Lake Bosumtwi & Return", description: "Morning visit to Lake Bosumtwi — a sacred crater lake, the only natural lake in Ghana. Canoe ride before the drive back to Accra." },
+    ],
+    region: "Ashanti Region",
+    badge: "Popular",
+    difficulty: "Easy",
+    tags: ["culture", "ashanti", "kente", "history", "market", "kumasi"],
+  },
+  {
+    id: "t6",
+    title: "Accra City Discovery Tour",
+    slug: "accra-city-discovery-tour",
+    location: "Accra, Greater Accra Region",
+    country: "Ghana",
+    category: "Cultural",
+    price: 349,
+    childPrice: 219,
+    groupPrice: 299,
+    duration: "3 Days",
+    durationDays: 3,
+    rating: 4.5,
+    reviewCount: 67,
+    maxGuests: 16,
+    image: "/tourist_site/Kwame/kwame-nkrumah-memorial.jpg",
+    gallery: [
+      "/tourist_site/Kwame/kwame-nkrumah-memorial.jpg",
+      "/tourist_site/Kwame/dr-kwame-nkrumah-s-mausoleum.jpg",
+      "/tourist_site/Kwame/dr-kwame-nkrumah-s-mausoleum (1).jpg",
+      "/tourist_site/Kwame/dr-kwame-nkrumah-s-mausoleum (2).jpg",
+      "/tourist_site/Kwame/dr-kwame-nkrumah-s-mausoleum (3).jpg",
+    ],
+    description: "Accra layers centuries of history onto one of Africa's most energetic capitals. This tour visits the city's defining landmarks — from the solemn Kwame Nkrumah Memorial Park and the grandeur of Independence Square, to the colonial-era Osu Castle perched above the Atlantic, the WEB DuBois Memorial Centre for Pan-African Culture, and the National Museum of Ghana. Between monuments, discover the city's pulse through historic Jamestown, vibrant Osu, and the legendary Makola Market.",
+    highlights: [
+      "Kwame Nkrumah Memorial Park & Mausoleum",
+      "Independence Square — where Ghana's 1957 independence was declared",
+      "Osu Castle (Christiansborg) — colonial fortress above the Atlantic",
+      "WEB DuBois Memorial Centre for Pan-African Culture",
+      "National Museum of Ghana — 3,000 years of Ghanaian history",
+      "Jamestown colonial quarter, lighthouse & fishing harbour",
+    ],
+    included: [
+      "City hotel accommodation (2 nights)",
+      "Daily breakfast",
+      "All museum entry fees",
+      "Accra city guide (local urban expert)",
+      "Air-conditioned transport throughout",
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Meals beyond breakfast",
+      "Shopping",
+    ],
+    itinerary: [
+      { day: 1, title: "Independence Square & Kwame Nkrumah Memorial Park", description: "Morning at Independence Square — Ghana's great open plaza where independence was declared in 1957. Walk the grounds of the Black Star Gate and the Black Star Monument. Afternoon at Kwame Nkrumah Memorial Park: tour the mausoleum and museum dedicated to Ghana's founding father. Evening rooftop dinner overlooking the city." },
+      { day: 2, title: "National Museum, WEB DuBois Centre & Osu Castle", description: "Morning at the National Museum of Ghana — artefacts and exhibits spanning 3,000 years of Ghanaian civilisation. Afternoon at the WEB DuBois Memorial Centre, the former Accra home of the great Pan-African intellectual. End the day at Osu Castle (Christiansborg) — the colonial-era fortress overlooking the sea that once served as the seat of Ghanaian government." },
+      { day: 3, title: "Jamestown, Makola Market & Labadi Beach", description: "Morning in historic Jamestown: climb the Victorian lighthouse, walk the old colonial fishing harbour, and explore the legendary boxing gyms. Late morning at Makola Market — one of West Africa's most alive trading markets. Afternoon at Labadi Beach for a farewell swim before dinner at a local chop house." },
+    ],
+    region: "Greater Accra",
+    badge: "New",
+    difficulty: "Easy",
+    tags: ["city", "culture", "accra", "history", "market", "urban"],
+  },
+  {
+    id: "t7",
+    title: "Cape Coast & Elmina Heritage Journey",
+    slug: "cape-coast-elmina-heritage-journey",
+    location: "Cape Coast & Elmina, Central Region",
+    country: "Ghana",
+    category: "Heritage",
+    price: 479,
+    childPrice: 299,
+    groupPrice: 419,
+    duration: "3 Days",
+    durationDays: 3,
+    rating: 4.9,
+    reviewCount: 241,
+    maxGuests: 14,
+    image: "/tourist_site/Cape Coast/the-world-famous-cape.jpg",
+    gallery: [
+      "/tourist_site/Cape Coast/the-world-famous-cape.jpg",
+      "/tourist_site/Cape Coast/visit-the-cape-coast.jpg",
+      "/tourist_site/Cape Coast/img-20181110-110045-largejpg.jpg",
+      "/tourist_site/Cape Coast/img-20181110-110927-largejpg.jpg",
+      "/tourist_site/Cape Coast/photo2jpg.jpg",
+    ],
+    description: "One of the most profound journeys any traveller can take. The slave castles of Cape Coast and Elmina are UNESCO World Heritage Sites that stand as both testament to one of history's greatest crimes and monuments to African resilience. With expert historian guides, this tour offers deep understanding, space for reflection, and connection with Ghana's coastal communities who carry this history forward.",
+    highlights: [
+      "Assin Manso Slave River — the sacred 'Last Bath' site of remembrance",
+      "Cape Coast Castle dungeon tour with historian guide",
+      "The Door of No Return — an emotional and essential experience",
+      "Elmina Castle (1482) — oldest European building south of the Sahara",
+      "Posuban shrines of the Fante people",
+      "Elmina Harbour sunset with local fishermen",
+    ],
+    included: [
+      "Hotel accommodation (2 nights) in Cape Coast",
+      "Daily breakfast + 1 dinner",
+      "Cape Coast Castle professional historian tour",
+      "Elmina Castle guided tour",
+      "All entrance fees",
+      "Transfers from Accra and return",
+    ],
+    excluded: [
+      "Travel to Accra",
+      "Travel insurance",
+      "Lunches and extra meals",
+      "Personal expenses",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra → Assin Manso → Cape Coast", description: "Morning departure from Accra. En route, stop at Assin Manso Slave River — the historically significant 'Last Bath' site where enslaved Africans rested before the march to the coast. A guided ceremony of remembrance at the riverside. Arrive Cape Coast afternoon. Evening briefing from your historian guide." },
+      { day: 2, title: "Cape Coast Castle — A Full Day", description: "Full-day deep tour of Cape Coast Castle. Walk through the male and female dungeons, the condemned cell, the Door of No Return. A ceremony of reflection at the water's edge. Afternoon walk through Cape Coast town and the Posuban shrines of the Fante people. Group dinner." },
+      { day: 3, title: "Elmina Castle & Harbour", description: "Morning tour of Elmina Castle — built by the Portuguese in 1482, the oldest European building south of the Sahara. Walk the slave market grounds. Afternoon at Elmina harbour with local fishermen before the drive back to Accra." },
+    ],
+    region: "Central Region",
+    badge: "Top Rated",
+    difficulty: "Easy",
+    tags: ["heritage", "history", "slavery", "castle", "culture", "central ghana"],
+  },
+  {
+    id: "t8",
+    title: "Busua Beach & Ankasa Rainforest",
+    slug: "busua-beach-ankasa-rainforest",
+    location: "Busua, Western Region",
+    country: "Ghana",
+    category: "Beach",
+    price: 599,
+    childPrice: 389,
+    groupPrice: 529,
+    duration: "5 Days",
+    durationDays: 5,
+    rating: 4.7,
+    reviewCount: 112,
+    maxGuests: 14,
+    image: "/tourist_site/Busua/busua-beach.jpg",
+    gallery: [
+      "/tourist_site/Busua/busua-beach.jpg",
+      "/tourist_site/Busua/the-beach-is-in-walking.jpg",
+      "/tourist_site/Busua/the-best-surfer-in-ghana.jpg",
+      "/tourist_site/Busua/the-best-surfer-in-ghana (1).jpg",
+      "/tourist_site/Busua/photo2jpg.jpg",
+    ],
+    description: "Ghana's Western Region hides some of the country's most beautiful secrets. Busua Beach — a crescent of golden sand flanked by palm trees — is one of West Africa's finest beaches. Combine it with a walk through Ankasa Conservation Area, one of the last patches of virgin tropical rainforest in Ghana, the historic Dutch fort at Princess Town, and the extraordinary stilt village of Nzulezo.",
+    highlights: [
+      "Busua Beach — Ghana's most beautiful coastal crescent",
+      "Surfing and bodyboarding lessons (beginner-friendly)",
+      "Ankasa Conservation Area — virgin rainforest walk",
+      "Nzulezo stilt village on Lake Tadane (by canoe)",
+      "Fort Metal Cross at Beyin (1691 Dutch fort)",
+      "Fijai drum and dance evening with local community",
+    ],
+    included: [
+      "Beach guesthouse accommodation (4 nights)",
+      "Daily breakfast + 2 group dinners",
+      "Ankasa forest guided walk",
+      "Nzulezo canoe village tour",
+      "Surfboard and bodyboard rental",
+      "Transfers from Accra",
+    ],
+    excluded: [
+      "Travel to Accra",
+      "Travel insurance",
+      "Surf lessons (optional add-on: $30)",
+      "Tips",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra to Busua", description: "4-hour drive to Ghana's Western Region. Arrive Busua mid-afternoon. Check in, first swim. Sunset cocktails at the beach bar." },
+      { day: 2, title: "Busua Beach Day & Surf", description: "Full free day on Busua's beautiful beach. Optional surfing lessons with local instructors. Afternoon village walk through Busua fishing community." },
+      { day: 3, title: "Nzulezo Stilt Village", description: "Early canoe trip across Lake Tadane to Nzulezo — an entire village built on stilts over the lake, with no roads, only water. Guided walk through the community. Afternoon return to Busua." },
+      { day: 4, title: "Ankasa Rainforest & Fort Metal Cross", description: "Morning guided walk in Ankasa Conservation Area — spot rare forest birds and butterflies among towering mahogany trees. Afternoon visit to 17th-century Fort Metal Cross at Beyin. Evening community drumming session." },
+      { day: 5, title: "Final Beach Morning & Return", description: "Final morning swim and breakfast on the beach. Depart for Accra after 10am." },
+    ],
+    region: "Western Region",
+    badge: "Sale",
+    discount: 10,
+    difficulty: "Moderate",
+    tags: ["beach", "surf", "rainforest", "stilt village", "western ghana", "nature"],
+  },
+  {
+    id: "t9",
+    title: "Eastern Ghana: Aburi, Cocoa & Boti Falls",
+    slug: "eastern-ghana-aburi-cocoa-boti-falls",
+    location: "Aburi & Koforidua, Eastern Region",
+    country: "Ghana",
+    category: "Nature",
+    price: 429,
+    childPrice: 279,
+    groupPrice: 379,
+    duration: "3 Days",
+    durationDays: 3,
+    rating: 4.7,
+    reviewCount: 58,
+    maxGuests: 14,
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+      "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
+      "https://images.unsplash.com/photo-1504233529578-6d46baba6d34?w=800&q=80",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    ],
+    description: "Just an hour from Accra, the Eastern Region offers a lush green escape into Ghana's natural and agricultural heartland. Stroll through Aburi Botanical Gardens — established in 1890 on a cool mist-covered ridge — and trace Ghana's cocoa heritage at the Tetteh Quashie Memorial Farm, where Ghana's cocoa revolution began. End with a hike to the spectacular Boti Falls, whose twin cataracts merge under a natural rock arch during the rains.",
+    highlights: [
+      "Aburi Botanical Gardens — colonial-era hilltop gardens since 1890",
+      "Tetteh Quashie Cocoa Farm — birthplace of Ghana's cocoa industry",
+      "Boti Falls — dramatic twin waterfall with natural rock arch",
+      "Akwapim Ridge scenic drive with panoramic views over Accra",
+      "Koforidua Bead Market — Ghana's most celebrated glass bead craft",
+      "Fresh cocoa pod tasting and chocolate-making demonstration",
+    ],
+    included: [
+      "Guesthouse accommodation in Aburi (2 nights)",
+      "Daily breakfast + 1 group lunch",
+      "Aburi Botanical Gardens guided tour",
+      "Tetteh Quashie Farm experience",
+      "Boti Falls hike with licensed guide",
+      "All entrance fees and transfers from Accra",
+    ],
+    excluded: [
+      "Travel to Accra",
+      "Travel insurance",
+      "Extra meals",
+      "Tips for guides",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra to Aburi — The Ridge & Botanical Gardens", description: "Morning departure from Accra (approx. 1 hour). Drive up the scenic Akwapim Ridge with sweeping views over the capital. Check in at Aburi guesthouse. Afternoon guided tour of Aburi Botanical Gardens — 64 acres of colonial-era tropical planting on a cool, mist-touched hilltop. Dinner at a local chop house on the ridge." },
+      { day: 2, title: "Tetteh Quashie Cocoa Farm & Koforidua Beads", description: "Morning at the Tetteh Quashie Memorial Cocoa Farm — where the first cocoa seedlings were planted in Ghana in 1876, launching the industry that built modern Ghana. Tour the farm, crack open a fresh pod, taste raw cacao, and take part in a chocolate-making demonstration. Afternoon at Koforidua's famous bead market — meet master bead artists and choose from thousands of handcrafted glass beads." },
+      { day: 3, title: "Boti Falls Hike & Return to Accra", description: "Morning drive to Boti Falls near Koforidua. Guided hike through forest to the dramatic twin waterfalls — in the wet season they merge under a natural rock arch called the Umbrella Rock. Swim in the natural pool below. Picnic lunch on the banks. Return to Accra by late afternoon." },
+    ],
+    region: "Eastern Region",
+    badge: "New",
+    difficulty: "Easy",
+    tags: ["nature", "botanical gardens", "cocoa", "waterfall", "eastern ghana", "eco"],
+  },
+];
+
+// ─── TESTIMONIALS ──────────────────────────────────────────────
+
+export const testimonials: Testimonial[] = [
+  {
+    id: "r1",
+    name: "Sophie Hartmann",
+    location: "Berlin, Germany",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&q=80",
+    rating: 5,
+    comment: "The Mole National Park safari exceeded every expectation. Walking within metres of wild elephants — only your ranger between you and them — is something I will never forget. Our guide Kofi knew the park intimately. Brownline Tours made everything seamless, from Accra to the bush and back.",
+    tourName: "Mole National Park Safari",
+    date: "March 2025",
+  },
+  {
+    id: "r2",
+    name: "Marcus Johnson",
+    location: "Atlanta, USA",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+    rating: 5,
+    comment: "As a descendant of enslaved Africans, visiting Cape Coast Castle was the most powerful experience of my life. The historian guide gave us space to feel, to grieve, and to understand. Brownline Tours treated this tour with the reverence and depth it deserves. Ghana welcomed me home.",
+    tourName: "Cape Coast & Elmina Heritage Journey",
+    date: "February 2025",
+  },
+  {
+    id: "r3",
+    name: "Chiara Russo",
+    location: "Milan, Italy",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80",
+    rating: 5,
+    comment: "Standing on the canopy walkway in Kakum, 40 metres above the ancient rainforest, was absolutely breathtaking. The next day at Cape Coast Castle was deeply moving. Ghana is extraordinary — so full of life, history, and warmth. Brownline Tours's small group made everything feel personal.",
+    tourName: "Kakum Canopy Walk & Cape Coast Heritage",
+    date: "January 2025",
+  },
+  {
+    id: "r4",
+    name: "David Osei-Bonsu",
+    location: "London, UK",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    rating: 5,
+    comment: "I booked the Kumasi cultural tour to reconnect with my Ashanti roots. Watching kente being woven in Bonwire — the same village my grandfather learned the craft — brought tears to my eyes. Brownline Tours's cultural guide was encyclopaedic in knowledge and deeply respectful.",
+    tourName: "Kumasi & Ashanti Kingdom Cultural Tour",
+    date: "December 2024",
+  },
+  {
+    id: "r5",
+    name: "Amara Diallo",
+    location: "Paris, France",
+    avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&q=80",
+    rating: 5,
+    comment: "The Volta Region completely surprised me — I did not expect Ghana to be so green and dramatic. The Wli Falls hike through the forest was magical and the summit of Afadjato at sunrise was simply stunning. Brownline Tours's guide was incredible — patient, knowledgeable, and great fun.",
+    tourName: "Volta Region Waterfalls & Afadjato Trek",
+    date: "November 2024",
+  },
+  {
+    id: "r6",
+    name: "James Whitfield",
+    location: "Sydney, Australia",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80",
+    rating: 5,
+    comment: "Ada Foah was pure paradise — we had an entire sandbar to ourselves for a full afternoon. The canoe ride through the estuary at sunrise, hippos calling in the distance, was pure Africa. And the grilled tilapia that evening was the best fish I have ever eaten. Ghana, I'll be back.",
+    tourName: "Ada Foah Beach & Volta Estuary Retreat",
+    date: "September 2024",
+  },
+];
+
+// ─── TEAM ──────────────────────────────────────────────────────
+
+export const team: TeamMember[] = [
+  {
+    id: "tm1",
+    name: "Kwame Asante",
+    role: "Founder & CEO",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
+    bio: "Born in Kumasi and raised between Accra and the UK, Kwame founded Brownline Tours in 2012 after seeing Ghana's incredible tourism potential go untapped. His mission: share the real Ghana with the world through authentic, community-driven experiences.",
+    social: { twitter: "#", instagram: "#", linkedin: "#" },
+  },
+  {
+    id: "tm2",
+    name: "Akosua Mensah",
+    role: "Head of Expeditions",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",
+    bio: "Akosua grew up in the Volta Region and has explored every corner of Ghana on foot. A certified wildlife guide and former Ghana Tourism Authority ranger, she designs all our adventure itineraries and personally vets every guide we work with.",
+    social: { twitter: "#", instagram: "#" },
+  },
+  {
+    id: "tm3",
+    name: "Yaw Boateng",
+    role: "Customer Experience Director",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&q=80",
+    bio: "Yaw's passion for Ghanaian hospitality — 'Akwaaba' runs deep in his veins — has earned Brownline Tours a 98% satisfaction rating. He reviews every booking personally and is available around the clock for clients in the field.",
+    social: { instagram: "#", linkedin: "#" },
+  },
+  {
+    id: "tm4",
+    name: "Abena Owusu",
+    role: "Cultural & Heritage Specialist",
+    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&q=80",
+    bio: "A historian with a master's degree in African Studies from the University of Ghana, Abena leads our heritage tours at Cape Coast and Elmina. She has guided over 500 groups through the slave castles and is an internationally recognised voice on diaspora tourism.",
+    social: { twitter: "#", instagram: "#", linkedin: "#" },
+  },
+];
+
+// ─── BLOG POSTS ────────────────────────────────────────────────
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: "b1",
+    slug: "complete-guide-to-ghana",
+    title: "The Complete First-Timer's Guide to Visiting Ghana",
+    excerpt: "From visa requirements to currency, safety, local customs, and must-know phrases in Twi — everything you need to know before your first trip to the 'Gateway to Africa'.",
+    content: `Ghana is one of the most welcoming and accessible countries in West Africa for first-time visitors...`,
+    image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80",
+    category: "Guides",
+    author: "Kwame Asante",
+    authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+    date: "April 5, 2025",
+    readTime: "10 min read",
+    tags: ["ghana", "travel guide", "first time", "tips"],
+  },
+  {
+    id: "b2",
+    slug: "cape-coast-elmina-guide",
+    title: "Visiting Cape Coast & Elmina Castles: What to Know and How to Prepare",
+    excerpt: "The slave castles of Ghana's Central Region are among the world's most important historical sites. Here's how to experience them with the depth and understanding they deserve.",
+    content: `Cape Coast Castle and Elmina Castle are UNESCO World Heritage Sites that represent one of history's most important and painful chapters...`,
+    image: "https://images.unsplash.com/photo-1574234225714-9e1a79cc2d0b?w=800&q=80",
+    category: "Heritage",
+    author: "Abena Owusu",
+    authorAvatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&q=80",
+    date: "March 20, 2025",
+    readTime: "12 min read",
+    tags: ["cape coast", "elmina", "history", "heritage"],
+  },
+  {
+    id: "b3",
+    slug: "ghana-food-guide",
+    title: "Ghana Food Guide: 12 Dishes You Absolutely Must Try",
+    excerpt: "From jollof rice to waakye, banku to kelewele — Ghanaian cuisine is one of West Africa's richest. Our local food guide will make sure you eat like a local from day one.",
+    content: `Ghanaian food is bold, nourishing, and deeply tied to community and celebration...`,
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+    category: "Food & Culture",
+    author: "Akosua Mensah",
+    authorAvatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80",
+    date: "March 8, 2025",
+    readTime: "8 min read",
+    tags: ["food", "ghana cuisine", "jollof", "culture"],
+  },
+  {
+    id: "b4",
+    slug: "best-beaches-ghana",
+    title: "The Best Beaches in Ghana: A Region-by-Region Breakdown",
+    excerpt: "Ghana has over 550km of Atlantic coastline with beaches ranging from wild surf breaks to serene river estuaries. Here's how to find the one that's perfect for you.",
+    content: `Ghana's coastline is vastly underrated. While most travellers head straight for the castles, the beaches are spectacular...`,
+    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+    category: "Beaches",
+    author: "Yaw Boateng",
+    authorAvatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80",
+    date: "February 25, 2025",
+    readTime: "7 min read",
+    tags: ["beach", "busua", "ada foah", "ghana coast"],
+  },
+  {
+    id: "b5",
+    slug: "mole-national-park-guide",
+    title: "Mole National Park: Everything You Need to Know Before You Go",
+    excerpt: "Mole is West Africa's best wildlife experience — but getting there, timing it right, and choosing the right activities takes planning. Our expert guide covers it all.",
+    content: `Mole National Park is Ghana's largest protected area and the crown jewel of West African wildlife tourism...`,
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80",
+    category: "Wildlife",
+    author: "Akosua Mensah",
+    authorAvatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80",
+    date: "February 10, 2025",
+    readTime: "9 min read",
+    tags: ["mole", "wildlife", "safari", "northern ghana"],
+  },
+  {
+    id: "b6",
+    slug: "kente-weaving-bonwire",
+    title: "The Story of Kente: Ghana's Royal Cloth and Where to See It Made",
+    excerpt: "Kente is one of the world's most recognisable textiles — but most people know almost nothing of its origin, meanings, and the master weavers who keep the tradition alive in Bonwire.",
+    content: `Every strip of kente cloth tells a story. The colours, the patterns, the names — all carry specific meaning in Ashanti culture...`,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    category: "Culture",
+    author: "Abena Owusu",
+    authorAvatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&q=80",
+    date: "January 28, 2025",
+    readTime: "6 min read",
+    tags: ["kente", "culture", "ashanti", "weaving", "kumasi"],
+  },
+];
+
+// ─── BOOKINGS (Sample / Mock) ─────────────────────────────────
+
+export const sampleBookings: Booking[] = [
+  {
+    id: "BK-001",
+    tourId: "t1",
+    tourTitle: "Mole National Park Safari",
+    tourImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=80",
+    name: "Sophie Hartmann",
+    email: "sophie@example.com",
+    phone: "+49 30 1234 5678",
+    adults: 2,
+    children: 0,
+    date: "2025-06-15",
+    totalPrice: 1598,
+    status: "Confirmed",
+    createdAt: "2025-03-10",
+  },
+  {
+    id: "BK-002",
+    tourId: "t5",
+    tourTitle: "Kumasi & Ashanti Kingdom Cultural Tour",
+    tourImage: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80",
+    name: "Marcus Johnson",
+    email: "marcus@example.com",
+    phone: "+1 404 555 0192",
+    adults: 2,
+    children: 1,
+    date: "2025-07-20",
+    totalPrice: 1327,
+    status: "Confirmed",
+    createdAt: "2025-02-28",
+  },
+  {
+    id: "BK-003",
+    tourId: "t3",
+    tourTitle: "Volta Region Waterfalls & Afadjato Trek",
+    tourImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+    name: "Chiara Russo",
+    email: "chiara@example.com",
+    phone: "+39 02 1234 5678",
+    adults: 1,
+    children: 0,
+    date: "2025-09-01",
+    totalPrice: 649,
+    status: "Pending",
+    createdAt: "2025-04-01",
+  },
+];
+
+// ─── GLOBAL FOOD ADD-ONS ──────────────────────────────────────
+
+export const globalFoodAddOns: FoodAddOn[] = [
+  {
+    id: "fa1",
+    name: "Ghanaian Cooking Masterclass",
+    description: "Learn to cook 3 classic Ghanaian dishes (jollof rice, groundnut soup, kelewele) with a local chef. Includes market visit, hands-on cooking, and sit-down meal.",
+    price: 65,
+    perPerson: true,
+    icon: "🍳",
+  },
+  {
+    id: "fa2",
+    name: "Beachside Seafood Dinner",
+    description: "Exclusive grilled seafood dinner on the beach — fresh tilapia, prawns, and lobster with Ghanaian sides, served at sunset over the Atlantic.",
+    price: 55,
+    perPerson: true,
+    icon: "🦞",
+  },
+  {
+    id: "fa3",
+    name: "Accra Street Food Walking Tour",
+    description: "2-hour guided street food walk with a local foodie. Taste waakye, kelewele, bofrot, and freshly pressed sugarcane juice at spots only locals know.",
+    price: 35,
+    perPerson: true,
+    icon: "🌮",
+  },
+  {
+    id: "fa4",
+    name: "Local Market & Farm Visit",
+    description: "Morning visit to a working cocoa or cassava farm. Meet the farmers, taste fresh produce, and take home a Ghanaian recipe card.",
+    price: 30,
+    perPerson: true,
+    icon: "🥬",
+  },
+  {
+    id: "fa5",
+    name: "Palm Wine & Pito Tasting",
+    description: "Guided tasting of traditional Ghanaian fermented beverages — sweet palm wine from the coast and millet-based pito from the north, with local snacks.",
+    price: 25,
+    perPerson: true,
+    icon: "🍺",
+  },
+  {
+    id: "fa6",
+    name: "Chop House Lunch Upgrade",
+    description: "Elevate your midday meal to a sit-down lunch at a hand-picked traditional chop house — full banku, fufu, or rice dish with protein and fresh pepper sauce.",
+    price: 20,
+    perPerson: true,
+    icon: "🍽️",
+  },
+  {
+    id: "fa7",
+    name: "Farewell Jollof & Highlife Dinner",
+    description: "A celebratory farewell dinner at a top Accra restaurant with live highlife music, a full Ghanaian feast, and drinks.",
+    price: 75,
+    perPerson: true,
+    icon: "🎊",
+  },
+  {
+    id: "fa8",
+    name: "Cocoa Farm & Chocolate Tasting",
+    description: "Visit a working cocoa farm in the Eastern or Western Region. Learn how Ghana's famous cocoa is grown, fermented, and dried. Taste fresh cacao and artisan Ghanaian chocolate.",
+    price: 40,
+    perPerson: true,
+    icon: "🍫",
+  },
+];
+
+// ─── RESTAURANT RECOMMENDATIONS BY DESTINATION ────────────────
+
+export const restaurantsByDestination: Record<string, Restaurant[]> = {
+  "Northern Region": [
+    { name: "Mole Motel Restaurant", cuisine: "Ghanaian / Continental", priceRange: "$$", specialty: "Locally sourced bush meat and groundnut soup overlooking the wildlife waterhole", address: "Mole National Park", mustTry: "Groundnut soup with fufu — best enjoyed watching elephants at the waterhole" },
+    { name: "Buipewura's Guesthouse Chop Bar", cuisine: "Northern Ghanaian", priceRange: "$", specialty: "TZ (tuo zaafi) with green leafy soup — the staple of northern Ghana", address: "Damongo town centre", mustTry: "TZ with freshly pounded dawadawa soup and dried fish" },
+  ],
+  "Central Region": [
+    { name: "Baobab House", cuisine: "Ghanaian Coastal", priceRange: "$$", specialty: "Freshly caught Atlantic seafood grilled over charcoal with Ghanaian pepper sauce", address: "Victoria Road, Cape Coast", mustTry: "Grilled barracuda with banku and shito (black pepper sauce)" },
+    { name: "Elmina Harbour Fish Stalls", cuisine: "Street Seafood", priceRange: "$", specialty: "Smoked and grilled fish straight from the morning catch at Elmina's legendary harbour", address: "Elmina fishing harbour", mustTry: "Fresh grilled red snapper with kenkey and pepper — eaten by the water" },
+    { name: "Hans Cottage Botel", cuisine: "Ghanaian / International", priceRange: "$$", specialty: "Dining over a crocodile pond — Ghanaian delicacies with an unforgettable setting", address: "Pedu, Cape Coast", mustTry: "Kontomire stew with boiled yam, while local crocodiles bask below" },
+  ],
+  "Volta Region": [
+    { name: "Chances Restaurant, Ho", cuisine: "Ghanaian / Continental", priceRange: "$$", specialty: "Volta River tilapia and regional Ewe cuisine in a garden setting", address: "Ho town, Volta Region", mustTry: "Akple with fetri detsi (okra stew) — the staple Ewe dish of the Volta Region" },
+    { name: "Taste Lodge, Hohoe", cuisine: "Local Ghanaian", priceRange: "$", specialty: "Home-cooked Ghanaian meals, fresh palm wine served straight from the tree", address: "Hohoe, Volta Region", mustTry: "Yam ampesi with garden egg stew and freshly pressed palm wine" },
+  ],
+  "Greater Accra": [
+    { name: "Buka Restaurant", cuisine: "West African", priceRange: "$$", specialty: "Authentic Nigerian-Ghanaian crossover cuisine in a vibrant open-air setting", address: "South Legon, Accra", mustTry: "Ofe akwu (palm nut soup) with pounded yam — West Africa in a bowl" },
+    { name: "Oseikrom", cuisine: "Ghanaian Fine Dining", priceRange: "$$$", specialty: "Elevated Ghanaian classics — the best fufu and light soup in Accra", address: "Airport Residential, Accra", mustTry: "Light soup with fresh tilapia and pounded fufu — elevated to fine dining standard" },
+    { name: "Jamestown Café", cuisine: "Ghanaian Modern", priceRange: "$$", specialty: "Modern Accra cuisine in the heart of historic Jamestown", address: "Ussher Town, Accra", mustTry: "Waakye platter — rice and beans with everything, the full Accra street food experience" },
+  ],
+  "Ashanti Region": [
+    { name: "Nkrumah Roof Top, Kumasi", cuisine: "Ghanaian / International", priceRange: "$$", specialty: "Panoramic Kumasi city views with the best fufu in the Ashanti Region", address: "Adum, Kumasi", mustTry: "Fufu with palmnut soup and fresh tilapia — the Ashanti gold standard" },
+    { name: "Vic Baboo's Café", cuisine: "Continental / Ghanaian", priceRange: "$$", specialty: "Beloved Kumasi institution open since 1964 — sandwiches, pies, and Ghanaian staples", address: "Prempeh II Street, Kumasi", mustTry: "Their legendary meat pie with fresh orange juice — a Kumasi morning institution" },
+  ],
+  "Western Region": [
+    { name: "Busua Beach Bar & Restaurant", cuisine: "Coastal Ghanaian", priceRange: "$$", specialty: "Freshly grilled whole fish and lobster, feet in the sand on Busua Beach", address: "Busua Beach, Western Region", mustTry: "Whole grilled lobster with chips and garlic butter — best eaten at sunset" },
+    { name: "African Rainbow", cuisine: "Ghanaian / International", priceRange: "$$", specialty: "Beachside dining with fresh catch of the day and classic Ghanaian dishes", address: "Busua", mustTry: "Fried plantain and fresh pepper sauce with crispy barracuda" },
+  ],
+};
+
+// ─── CULINARY TOURS ───────────────────────────────────────────
+
+export const culinaryTours: Tour[] = [
+  {
+    id: "c1",
+    title: "Accra Street Food & Jollof Rice Masterclass",
+    slug: "accra-street-food-jollof-masterclass",
+    location: "Accra, Greater Accra Region",
+    country: "Ghana",
+    category: "Culinary",
+    price: 399,
+    childPrice: 249,
+    groupPrice: 349,
+    duration: "3 Days",
+    durationDays: 3,
+    rating: 4.9,
+    reviewCount: 87,
+    maxGuests: 10,
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+      "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?w=800&q=80",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    ],
+    description: "Accra's food scene is one of West Africa's best-kept secrets. From the legendary waakye stalls of Osu to the kelewele (spiced fried plantain) vendors of Jamestown, this immersive food tour takes you deep into Ghana's culinary soul. Learn to cook the perfect jollof rice — Ghana's claim to the jollof wars — from a Ghanaian home chef, and explore the spice markets that make it all possible.",
+    highlights: [
+      "Guided waakye crawl across three neighbourhoods",
+      "Jollof rice and groundnut soup cooking masterclass",
+      "Makola Market spice stall deep dive",
+      "Jamestown kelewele and bofrot street food evening",
+      "Craft akpeteshie (local spirit) tasting session",
+      "Farm-to-table supper with a local family",
+    ],
+    included: [
+      "Boutique guesthouse accommodation (2 nights)",
+      "All meals and tastings on tour",
+      "Cooking masterclass with professional chef",
+      "All transport within Accra",
+      "Food guide and recipe booklet",
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Personal shopping at the market",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival & Accra Street Food Orientation", description: "Afternoon arrival and check-in. Evening guided street food walk through Osu and Jamestown — kelewele, bofrot, suya, and fresh coconut water.", meals: ["Dinner (street food tour)"] },
+      { day: 2, title: "Makola Market & Cooking Masterclass", description: "Morning deep dive into Makola Market — source the freshest peppers, plantain, and fish. Afternoon hands-on cooking masterclass: jollof rice, kontomire stew, and kelewele. Eat what you cooked for dinner.", meals: ["Breakfast", "Lunch (market snacks)", "Dinner (cooked by you)"] },
+      { day: 3, title: "Waakye Pilgrimage & Farewell Family Supper", description: "Morning waakye breakfast at Accra's most celebrated stall. Afternoon at the Accra Arts Centre. Evening farm-to-table supper at a local family home.", meals: ["Breakfast (waakye)", "Family farewell supper"] },
+    ],
+    region: "Greater Accra",
+    badge: "Popular",
+    difficulty: "Easy",
+    tags: ["food", "cooking class", "street food", "accra", "jollof", "culinary"],
+    mealPlan: { breakfast: true, lunch: true, dinner: true, snacks: true, note: "Every meal is a curated experience — food is the tour." },
+    cuisineHighlights: ["Jollof rice", "Waakye", "Kelewele", "Groundnut soup with fufu", "Banku and tilapia", "Bofrot (doughnuts)"],
+    foodAddOns: [],
+    restaurants: restaurantsByDestination["Greater Accra"],
+  },
+  {
+    id: "c2",
+    title: "Volta Farm-to-Table & Ewe Cuisine Experience",
+    slug: "volta-farm-to-table-ewe-cuisine",
+    location: "Ho & Kpeve, Volta Region",
+    country: "Ghana",
+    category: "Culinary",
+    price: 449,
+    childPrice: 279,
+    groupPrice: 399,
+    duration: "4 Days",
+    durationDays: 4,
+    rating: 4.7,
+    reviewCount: 62,
+    maxGuests: 8,
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+      "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?w=800&q=80",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    ],
+    description: "The Volta Region is Ghana's greenest and most fertile — a landscape of rolling hills, small farms, and rivers that feeds some of the country's most distinctive cuisine. The Ewe people have a food culture built around fermented flavours, fresh vegetables, and communal eating. This immersive farm-to-table tour takes you to working farms, a village cooking session, and a palm wine tapping experience.",
+    highlights: [
+      "Visit a working cocoa and cassava farm in the Volta hills",
+      "Ewe cooking class — akple, fetri detsi, and palm nut soup",
+      "Palm wine tapping directly from the tree",
+      "Community lunch cooked outdoors on open fire",
+      "Fresh Lake Volta tilapia fishing and cooking",
+      "Fermentation and dawadawa seed processing workshop",
+    ],
+    included: [
+      "Eco-lodge accommodation (3 nights)",
+      "All meals included",
+      "Farm visits and cooking classes",
+      "Palm wine experience",
+      "Local guides and translators",
+      "Transfers from Ho",
+    ],
+    excluded: [
+      "Travel to Ho",
+      "Travel insurance",
+      "Tips",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival in Ho & Introduction to Ewe Cuisine", description: "Transfer to Ho. Evening welcome dinner at a local home — traditional Ewe dishes and an introduction to the week's flavours.", meals: ["Dinner (traditional Ewe welcome)"] },
+      { day: 2, title: "Cocoa Farm & Palm Wine Tapping", description: "Morning visit to a working cocoa and cassava farm. Learn how fermentation transforms raw ingredients. Afternoon palm wine tapping — taste fresh wine directly from the tree.", meals: ["Breakfast", "Farm lunch", "Dinner"] },
+      { day: 3, title: "Ewe Cooking Masterclass & Community Feast", description: "Full-day cooking class with village women. Learn akple (fermented corn dough), fetri detsi (okra stew), and palm nut soup. Share the meal in a community feast.", meals: ["Breakfast", "Community feast lunch", "Dinner"] },
+      { day: 4, title: "Lake Volta Fishing & Farewell", description: "Morning fishing on Lake Volta with local fishermen. Cook your catch for lunch. Afternoon transfer back to Accra.", meals: ["Breakfast", "Fish lunch (your catch)"] },
+    ],
+    region: "Volta Region",
+    badge: "New",
+    difficulty: "Easy",
+    tags: ["farm to table", "ewe cuisine", "cocoa", "volta", "cooking class", "culinary"],
+    mealPlan: { breakfast: true, lunch: true, dinner: true, snacks: true, note: "All meals sourced from within 20km of where you eat them." },
+    cuisineHighlights: ["Akple (fermented corn dough)", "Fetri detsi (okra stew)", "Palm nut soup", "Fresh Lake Volta tilapia", "Palm wine", "Dawadawa-spiced dishes"],
+    foodAddOns: [],
+    restaurants: restaurantsByDestination["Volta Region"],
+  },
+  {
+    id: "c3",
+    title: "Ghana Coastal Seafood & Fishing Villages",
+    slug: "ghana-coastal-seafood-fishing-villages",
+    location: "Elmina & Moree, Central Region",
+    country: "Ghana",
+    category: "Culinary",
+    price: 499,
+    childPrice: 319,
+    groupPrice: 449,
+    duration: "4 Days",
+    durationDays: 4,
+    rating: 4.8,
+    reviewCount: 74,
+    maxGuests: 10,
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+      "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?w=800&q=80",
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+    ],
+    description: "Ghana's Atlantic coastline has one of West Africa's richest fishing cultures. The smoked fish markets of Elmina, the kenkey vendors of Cape Coast, and the fresh-catch barbecues of Moree beach are a world unto themselves. This tour follows the fish from ocean to plate — going out with fishermen at dawn, smoking your catch, and learning the coastal food traditions that have sustained these communities for centuries.",
+    highlights: [
+      "Pre-dawn fishing trip with Elmina fishermen",
+      "Fish smoking workshop — learn Ghana's coastal preservation method",
+      "Kenkey and shito (pepper sauce) making masterclass",
+      "Moree beach fish barbecue — grilled barracuda at sunset",
+      "Smoked herring market tour in Elmina",
+      "Coastal village communal cooking session",
+    ],
+    included: [
+      "Coastal guesthouse accommodation (3 nights)",
+      "All meals and all food experiences",
+      "Fishing trip with local fishermen",
+      "All cooking workshops",
+      "Transfers from Accra and return",
+    ],
+    excluded: [
+      "International travel to Ghana",
+      "Travel insurance",
+      "Personal purchases",
+    ],
+    itinerary: [
+      { day: 1, title: "Accra to Elmina — The Coast Begins", description: "Drive to Elmina (3 hours). Afternoon tour of the famous smoked fish market. Welcome dinner at the harbour.", meals: ["Dinner (harbour seafood)"] },
+      { day: 2, title: "Pre-Dawn Fishing & Fish Smoking", description: "3am wake-up to join Elmina fishermen on their morning trip. Return with the catch. Afternoon fish smoking workshop — learn the traditional method used for centuries on this coast.", meals: ["Breakfast", "Lunch (fresh catch)", "Dinner"] },
+      { day: 3, title: "Kenkey Masterclass & Moree Beach Barbecue", description: "Morning kenkey-making masterclass with a local grandmother. Learn the three-day fermentation process. Evening beach barbecue at Moree — whole grilled barracuda with shito and cold Ghanaian beer.", meals: ["Breakfast", "Kenkey lunch", "Beach barbecue dinner"] },
+      { day: 4, title: "Cape Coast Market & Return", description: "Morning tour of Cape Coast market — the best shito and smoked fish in the Central Region. Return to Accra with a box of Ghanaian provisions.", meals: ["Breakfast", "Market lunch"] },
+    ],
+    region: "Central Region",
+    badge: "Top Rated",
+    difficulty: "Easy",
+    tags: ["seafood", "fishing", "cooking class", "coastal", "elmina", "culinary"],
+    mealPlan: { breakfast: true, lunch: true, dinner: true, snacks: false, note: "Every meal follows the fish — from boat to your plate within hours." },
+    cuisineHighlights: ["Grilled barracuda with shito", "Smoked herring with kenkey", "Fresh tilapia with banku", "Kontomire stew with smoked fish", "Basa with palm oil sauce"],
+    foodAddOns: [],
+    restaurants: restaurantsByDestination["Central Region"],
+  },
+];
+
+// Merge culinary tours into main tours array export helper
+export const allTours: Tour[] = [...tours, ...culinaryTours];
+
+// ─── DIETARY PREFERENCES ─────────────────────────────────────
+
+export const dietaryOptions = [
+  { id: "vegetarian",      label: "Vegetarian",        icon: "🥗" },
+  { id: "vegan",           label: "Vegan",              icon: "🌱" },
+  { id: "gluten-free",     label: "Gluten-Free",        icon: "🌾" },
+  { id: "halal",           label: "Halal",              icon: "☪️" },
+  { id: "kosher",          label: "Kosher",             icon: "✡️" },
+  { id: "nut-allergy",     label: "Nut Allergy",        icon: "🥜" },
+  { id: "dairy-free",      label: "Dairy-Free",         icon: "🥛" },
+  { id: "seafood-allergy", label: "Seafood Allergy",    icon: "🦐" },
+  { id: "no-pork",         label: "No Pork",            icon: "🐷" },
+  { id: "diabetic",        label: "Diabetic-Friendly",  icon: "💉" },
+];
+
+// ─── STATS ─────────────────────────────────────────────────────
+
+export const stats = [
+  { label: "Happy Travelers", value: "15,000+", icon: "users" },
+  { label: "Ghana Regions",   value: "10",       icon: "globe" },
+  { label: "Tour Packages",   value: "45+",      icon: "map"   },
+  { label: "Years of Experience", value: "12+",  icon: "award" },
+];
+
+// ─── GHANA REGIONS ────────────────────────────────────────────
+
+export interface GhanaRegion {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  image: string;
+  accentColor: string;
+  emoji: string;
+}
+
+export const ghanaRegions: GhanaRegion[] = [
+  {
+    id: "Northern Ghana",
+    name: "Northern Ghana",
+    tagline: "Wildlife, savannas & ancient traditions",
+    description: "Home to Mole National Park — West Africa's finest safari with wild elephants, hippos, and 300+ bird species in the Northern savanna.",
+    image: "/tourist_site/Mole/safari-guided-tours-at.jpg",
+    accentColor: "#C2410C",
+    emoji: "🐘",
+  },
+  {
+    id: "Central Region",
+    name: "Central Region",
+    tagline: "Heritage castles & rainforest canopy",
+    description: "UNESCO World Heritage slave castles, Kakum's suspended walkway 40m above ancient rainforest, and Ghana's most storied Atlantic coastline.",
+    image: "/tourist_site/Cape Coast/visit-the-cape-coast.jpg",
+    accentColor: "#1D4ED8",
+    emoji: "🏰",
+  },
+  {
+    id: "Volta Region",
+    name: "Volta Region",
+    tagline: "Mountains, waterfalls & highland trails",
+    description: "Wli Falls — West Africa's highest waterfall — Mount Afadjato, vast Lake Volta, and the lush green highlands straddling the Togo border.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    accentColor: "#15803D",
+    emoji: "🏔️",
+  },
+  {
+    id: "Greater Accra",
+    name: "Greater Accra",
+    tagline: "City life, beaches & the Volta estuary",
+    description: "Ghana's dynamic capital, historic Jamestown, Labadi Beach, and the pristine Ada Foah estuary where the Volta River meets the Atlantic.",
+    image: "/tourist_site/Kwame/kwame-nkrumah-memorial.jpg",
+    accentColor: "#7C3AED",
+    emoji: "🏙️",
+  },
+  {
+    id: "Ashanti Region",
+    name: "Ashanti Region",
+    tagline: "Kente, royalty & the Garden City",
+    description: "Kumasi — proud seat of the Ashanti Kingdom — home of kente weaving, West Africa's largest open-air market, and the sacred crater Lake Bosumtwi.",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80",
+    accentColor: "#92400E",
+    emoji: "👑",
+  },
+  {
+    id: "Western Region",
+    name: "Western Region",
+    tagline: "Surf, rainforest & stilt villages",
+    description: "Busua Beach, Ankasa's virgin rainforest, the extraordinary Nzulezo stilt village built entirely over water, and 17th-century Dutch coastal forts.",
+    image: "/tourist_site/Busua/busua-beach.jpg",
+    accentColor: "#0369A1",
+    emoji: "🌊",
+  },
+  {
+    id: "Eastern Region",
+    name: "Eastern Region",
+    tagline: "Botanical gardens, cocoa & waterfalls",
+    description: "Aburi Botanical Gardens on the misty Akwapim Ridge, the Tetteh Quashie Cocoa Farm where Ghana's cocoa revolution began, and the spectacular twin Boti Falls.",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    accentColor: "#166534",
+    emoji: "🌿",
+  },
+];
+
+// ─── DESTINATIONS (Hero carousel) ─────────────────────────────
+
+export const featuredDestinations = [
+  { name: "Mole National Park", country: "Northern Ghana", image: "/tourist_site/hero/caption (1).jpg" },
+  { name: "Cape Coast Castle",  country: "Central Region", image: "/tourist_site/hero/caption.jpg" },
+  { name: "Larabanga Mosque",   country: "Northern Ghana", image: "/tourist_site/hero/facade-avant-mosquee.jpg" },
+  { name: "Ghana Wildlife",     country: "Northern Ghana", image: "/tourist_site/hero/25.jpg" },
+];
