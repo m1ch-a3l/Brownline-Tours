@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -11,22 +12,56 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://brownlinetours.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Brownline Tours — Immersive Ghana Experiences",
     template: "%s | Brownline Tours",
   },
   description:
     "Brownline Tours specialises in immersive travel experiences across Ghana — castles & slave route history, waterfalls & nature, cultural immersion, and custom private itineraries.",
-  keywords: ["ghana tours", "ghana tourism", "cape coast castle", "slave route tour", "waterfalls ghana", "cultural tour ghana", "private itinerary ghana", "ghana travel"],
+  keywords: ["ghana tours", "ghana tourism", "cape coast castle", "slave route tour", "waterfalls ghana", "cultural tour ghana", "private itinerary ghana", "ghana travel", "mole national park", "kakum national park", "kumasi ashanti tour"],
+  authors: [{ name: "Brownline Tours" }],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://brownlinetours.com",
+    url: siteUrl,
     siteName: "Brownline Tours",
     title: "Brownline Tours — Immersive Ghana Experiences",
     description: "Immersive cultural, heritage, nature and adventure tours across Ghana. Safe, guided, and well-curated experiences for individuals and groups.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1080,
+        height: 732,
+        alt: "Brownline Tours",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brownline Tours — Immersive Ghana Experiences",
+    description: "Immersive cultural, heritage, nature and adventure tours across Ghana.",
+    images: ["/logo.png"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f59e0b",
 };
 
 export default function RootLayout({
@@ -45,6 +80,7 @@ export default function RootLayout({
             <WhatsAppButton />
           </div>
         </NextAuthProvider>
+        <Analytics />
       </body>
     </html>
   );
