@@ -79,7 +79,7 @@ const organizationJsonLd = {
     addressLocality: "Accra",
     addressCountry: "GH",
   },
-  telephone: "+233302771234",
+  telephone: "+233247810448",
   email: "hello@brownlinetours.com",
   areaServed: "Ghana",
   sameAs: [],

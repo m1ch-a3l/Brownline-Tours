@@ -170,7 +170,7 @@ export default function ContactClientPage() {
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-700">Phone</div>
-                    <div className="text-sm text-slate-500">+233 30 277 1234<br />+233 24 500 6789 (WhatsApp)</div>
+                    <div className="text-sm text-slate-500">+233 24 781 0448<br />+233 24 781 0448 (WhatsApp)</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -211,7 +211,7 @@ export default function ContactClientPage() {
             <div className="bg-amber-600 rounded-2xl p-5 text-white">
               <div className="font-bold text-lg mb-1">Emergency Line</div>
               <div className="text-sky-100 text-sm mb-3">For travelers currently on tour</div>
-              <div className="text-2xl font-extrabold">+233 24 500 9999</div>
+              <div className="text-2xl font-extrabold">+233 24 781 0448</div>
               <div className="text-sky-200 text-xs mt-1">Available 24/7</div>
             </div>
           </div>

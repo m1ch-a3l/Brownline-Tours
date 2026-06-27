@@ -325,7 +325,7 @@ export default function TermsOfServicePage() {
             <strong>{COMPANY}</strong><br />
             {ADDRESS}<br />
             Email: <a href={`mailto:${EMAIL}`}>{EMAIL}</a><br />
-            Phone: +233 30 277 1234
+            Phone: +233 24 781 0448
           </address>
         </Section>
 

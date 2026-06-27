@@ -852,7 +852,7 @@ export default function TourDetailClient({ tour, related }: Props) {
                   </div>
                   <div className="flex gap-2">
                     <a
-                      href="https://wa.me/233302771234"
+                      href="https://wa.me/233247810448"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 flex items-center justify-center gap-2 py-2.5 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors"

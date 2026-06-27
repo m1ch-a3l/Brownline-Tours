@@ -527,7 +527,7 @@ export default function BookingClientPage() {
                         <div className="flex justify-between"><span className="text-slate-500">Branch:</span><span className="font-mono">Airport City, Accra</span></div>
                         <div className="flex justify-between"><span className="text-slate-500">Reference:</span><span className="font-mono text-sky-600">GQ-{Math.random().toString(36).slice(2,8).toUpperCase()}</span></div>
                       </div>
-                      <p className="text-xs text-slate-400">Booking will be confirmed within 1 business day after payment is received. WhatsApp us at +233 24 500 6789 once transferred.</p>
+                      <p className="text-xs text-slate-400">Booking will be confirmed within 1 business day after payment is received. WhatsApp us at +233 24 781 0448 once transferred.</p>
                     </div>
                   )}
 

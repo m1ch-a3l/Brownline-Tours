@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 
-const WHATSAPP_NUMBER = "233245006789";
+const WHATSAPP_NUMBER = "233247810448";
 
 const quickMessages = [
   "I'd like to plan a trip to Ghana 🌍",

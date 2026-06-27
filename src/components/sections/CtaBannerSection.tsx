@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMBER = "233245006789";
+const WHATSAPP_NUMBER = "233247810448";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I'd like to speak with a Brownline Tours travel specialist.")}`;
 
 export default function CtaBannerSection() {

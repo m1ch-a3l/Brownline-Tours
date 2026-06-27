@@ -211,7 +211,7 @@ export default function CookiePolicyPage() {
             <strong>{COMPANY}</strong><br />
             4 Airport Road, Kotoka Area, Accra, Ghana<br />
             Email: <a href={`mailto:${EMAIL}`} className="text-amber-600 hover:underline">{EMAIL}</a><br />
-            Phone: +233 30 277 1234
+            Phone: +233 24 781 0448
           </address>
         </Section>
 
