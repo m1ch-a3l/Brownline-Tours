@@ -64,6 +64,27 @@ export const viewport: Viewport = {
   themeColor: "#f59e0b",
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  name: "Brownline Tours",
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  image: `${siteUrl}/logo.png`,
+  description:
+    "Brownline Tours specialises in immersive travel experiences across Ghana — castles & slave route history, waterfalls & nature, cultural immersion, and custom private itineraries.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "4 Airport Road, Kotoka Area",
+    addressLocality: "Accra",
+    addressCountry: "GH",
+  },
+  telephone: "+233302771234",
+  email: "hello@brownlinetours.com",
+  areaServed: "Ghana",
+  sameAs: [],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +93,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} scroll-smooth`}>
       <body className="antialiased bg-white text-slate-800">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <NextAuthProvider>
           <div className="min-h-screen flex flex-col">
             <Navbar />
