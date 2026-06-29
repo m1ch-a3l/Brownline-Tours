@@ -145,6 +145,94 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Meet the Founder */}
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <p className="text-amber-600 font-semibold text-sm uppercase tracking-widest mb-2">Meet the Founder</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-1">Marven Brown</h2>
+            <p className="text-slate-500 font-medium">Founder &amp; CEO, Brownline Tours</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 items-start mb-12">
+            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-4xl shrink-0 mx-auto lg:mx-0 shadow-lg">
+              MB
+            </div>
+            <div className="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Brownline Tours was founded by Marven Brown, a Ghanaian tour guide and travel
+                professional with a deep passion for storytelling, culture, and meaningful travel
+                experiences.
+              </p>
+              <p>
+                With hands-on experience guiding travelers across Ghana&apos;s key destinations —
+                from historic forts and castles along the coast to the Ashanti Kingdom, Volta
+                landscapes, and northern cultural sites — Marven developed a strong understanding
+                of what visitors truly seek: authentic connection, not just sightseeing.
+              </p>
+              <p>
+                His vision for Brownline Tours is to move beyond traditional tourism and create
+                immersive experiences that allow travelers to engage deeply with Ghana&apos;s
+                history, people, and way of life. He is especially passionate about heritage
+                tourism, African diaspora connections, eco-tourism, and community-based travel.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-7 sm:p-9 mb-12">
+            <p className="text-amber-700 font-semibold text-sm uppercase tracking-widest mb-3">His Vision</p>
+            <blockquote className="text-xl sm:text-2xl font-bold text-slate-800 leading-snug mb-4">
+              &ldquo;To show Ghana in a way that feels real, personal, and unforgettable — while
+              ensuring local communities benefit from every journey.&rdquo;
+            </blockquote>
+            <p className="text-slate-600 leading-relaxed">
+              He believes tourism should not only create memories for visitors but also generate
+              opportunity and positive impact for the people and places visited.
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-5">Leadership Approach</h3>
+            <p className="text-slate-600 leading-relaxed mb-4">Under his leadership, Brownline Tours is built on:</p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+              {[
+                "Authentic storytelling and cultural education",
+                "Personalized and immersive travel experiences",
+                "Respect for local communities and traditions",
+                "Responsible and sustainable tourism practices",
+                "Strong commitment to service and guest experience",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2 text-slate-600 text-sm">
+                  <span className="text-amber-500 font-bold mt-0.5">•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-slate-600 leading-relaxed">
+              He is also developing the Brownline Impact Initiative, focused on supporting
+              healthcare, education, and community development through tourism-driven impact
+              projects.
+            </p>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-slate-800 mb-3">A Personal Touch</h3>
+            <p className="text-slate-600 leading-relaxed">
+              For Marven, guiding is not just a profession — it is a calling. Every tour is an
+              opportunity to connect people to Ghana in a meaningful way, share untold stories, and
+              create lifelong memories for travelers from around the world.
+            </p>
+          </div>
+
+          <blockquote className="text-center border-t border-slate-200 pt-10">
+            <p className="text-xl sm:text-2xl font-extrabold text-amber-600 leading-snug max-w-2xl mx-auto">
+              &ldquo;Travel is not just about places — it&apos;s about connection, and connection is
+              what we create at Brownline Tours.&rdquo;
+            </p>
+          </blockquote>
+        </div>
+      </section>
+
       {/* Mission & Vision */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
