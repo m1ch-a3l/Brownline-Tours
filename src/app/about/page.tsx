@@ -155,8 +155,14 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 items-start mb-12">
-            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-extrabold text-4xl shrink-0 mx-auto lg:mx-0 shadow-lg">
-              MB
+            <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden shrink-0 mx-auto lg:mx-0 shadow-lg ring-4 ring-amber-100">
+              <Image
+                src="/ceo-profile/WhatsApp Image 2026-06-28 at 12.48.58 PM (4).jpeg"
+                alt="Marven Brown — Founder & CEO, Brownline Tours"
+                fill
+                className="object-cover"
+                sizes="144px"
+              />
             </div>
             <div className="space-y-4 text-slate-600 leading-relaxed">
               <p>
