@@ -49,7 +49,7 @@ const footerLinks = {
   Company: [
     { href: "/about",          label: "About Us" },
     { href: "/blog",           label: "Travel Blog" },
-    { href: "/about#partners", label: "Partners" },
+    { href: "/portfolio",      label: "Portfolio" },
     { href: "/contact",        label: "Contact Us" },
     { href: "/admin",          label: "Admin Portal" },
   ],
