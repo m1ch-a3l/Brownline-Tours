@@ -109,6 +109,11 @@ function ToursContent() {
       default:           result.sort((a, b) => b.reviewCount - a.reviewCount);
     }
 
+    // Signature flagship tours always lead the list
+    const signature = result.filter((t) => t.badge === "Signature");
+    const rest = result.filter((t) => t.badge !== "Signature");
+    result = [...signature, ...rest];
+
     return result;
   }, [search, category, region, duration, priceRange, difficulty, sort]);
 
