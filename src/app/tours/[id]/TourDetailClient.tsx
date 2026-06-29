@@ -25,7 +25,7 @@ import {
   ZoomIn,
 } from "lucide-react";
 import { Tour, testimonials, globalFoodAddOns } from "@/lib/data";
-import { formatPrice, getDifficultyColor, getBadgeColor } from "@/lib/utils";
+import { formatPrice, getDifficultyColor, getBadgeColor, getBadgeLabel } from "@/lib/utils";
 import { wishlistStore } from "@/lib/store";
 import TourCard from "@/components/ui/TourCard";
 import StarRating from "@/components/ui/StarRating";
@@ -200,7 +200,7 @@ export default function TourDetailClient({ tour, related }: Props) {
                 <span className="text-xs font-bold text-amber-600 uppercase tracking-widest">{tour.category}</span>
                 {tour.badge && (
                   <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full text-white ${getBadgeColor(tour.badge)}`}>
-                    {tour.badge}
+                    {getBadgeLabel(tour.badge)}
                   </span>
                 )}
                 <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold ${getDifficultyColor(tour.difficulty)}`}>

@@ -62,7 +62,11 @@ export function getBadgeColor(badge?: string): string {
     case "New": return "bg-emerald-500";
     case "Sale": return "bg-violet-500";
     case "Top Rated": return "bg-sky-500";
-    case "Signature": return "bg-gradient-to-r from-amber-600 to-orange-600";
+    case "Signature": return "bg-emerald-500";
     default: return "bg-slate-500";
   }
+}
+
+export function getBadgeLabel(badge?: string): string | undefined {
+  return badge === "Signature" ? "New" : badge;
 }

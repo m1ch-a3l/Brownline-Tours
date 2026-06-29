@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Star, Clock, MapPin, Heart, Users, Camera, CheckCircle, Zap, Flame } from "lucide-react";
 import { Tour } from "@/lib/data";
-import { formatPrice, getBadgeColor, getDifficultyColor } from "@/lib/utils";
+import { formatPrice, getBadgeColor, getBadgeLabel, getDifficultyColor } from "@/lib/utils";
 import { wishlistStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { REGION_ICONS } from "@/components/sections/BrowseByRegionSection";
@@ -64,7 +64,7 @@ export default function TourCard({ tour, view = "grid" }: TourCardProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             {tour.badge && (
               <span className={cn("absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white shadow", getBadgeColor(tour.badge))}>
-                {tour.badge}
+                {getBadgeLabel(tour.badge)}
               </span>
             )}
             {tour.discount && (
@@ -186,12 +186,12 @@ export default function TourCard({ tour, view = "grid" }: TourCardProps) {
           {/* Badge */}
           {tour.badge && !tour.discount && (
             <span className={cn("absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white shadow", getBadgeColor(tour.badge))}>
-              {tour.badge}
+              {getBadgeLabel(tour.badge)}
             </span>
           )}
           {tour.badge && tour.discount && (
             <span className={cn("absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white shadow", getBadgeColor(tour.badge))}>
-              {tour.badge}
+              {getBadgeLabel(tour.badge)}
             </span>
           )}
 
