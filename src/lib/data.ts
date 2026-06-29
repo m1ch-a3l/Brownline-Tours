@@ -74,15 +74,6 @@ export interface Testimonial {
   date: string;
 }
 
-export interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  image: string;
-  bio: string;
-  social: { twitter?: string; instagram?: string; linkedin?: string };
-}
-
 export interface BlogPost {
   id: string;
   slug: string;
@@ -1250,41 +1241,6 @@ export const testimonials: Testimonial[] = [
 ];
 
 // ─── TEAM ──────────────────────────────────────────────────────
-
-export const team: TeamMember[] = [
-  {
-    id: "tm1",
-    name: "Kwame Asante",
-    role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
-    bio: "Born in Kumasi and raised between Accra and the UK, Kwame founded Brownline Tours in 2012 after seeing Ghana's incredible tourism potential go untapped. His mission: share the real Ghana with the world through authentic, community-driven experiences.",
-    social: { twitter: "#", instagram: "#", linkedin: "#" },
-  },
-  {
-    id: "tm2",
-    name: "Akosua Mensah",
-    role: "Head of Expeditions",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",
-    bio: "Akosua grew up in the Volta Region and has explored every corner of Ghana on foot. A certified wildlife guide and former Ghana Tourism Authority ranger, she designs all our adventure itineraries and personally vets every guide we work with.",
-    social: { twitter: "#", instagram: "#" },
-  },
-  {
-    id: "tm3",
-    name: "Yaw Boateng",
-    role: "Customer Experience Director",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&q=80",
-    bio: "Yaw's passion for Ghanaian hospitality — 'Akwaaba' runs deep in his veins — has earned Brownline Tours a 98% satisfaction rating. He reviews every booking personally and is available around the clock for clients in the field.",
-    social: { instagram: "#", linkedin: "#" },
-  },
-  {
-    id: "tm4",
-    name: "Abena Owusu",
-    role: "Cultural & Heritage Specialist",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&q=80",
-    bio: "A historian with a master's degree in African Studies from the University of Ghana, Abena leads our heritage tours at Cape Coast and Elmina. She has guided over 500 groups through the slave castles and is an internationally recognised voice on diaspora tourism.",
-    social: { twitter: "#", instagram: "#", linkedin: "#" },
-  },
-];
 
 // ─── BLOG POSTS ────────────────────────────────────────────────
 
