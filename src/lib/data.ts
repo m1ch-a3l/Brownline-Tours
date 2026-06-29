@@ -51,7 +51,7 @@ export interface Tour {
   excluded: string[];
   itinerary: { day: number; title: string; description: string; meals?: string[] }[];
   region: string;
-  badge?: 'Popular' | 'New' | 'Sale' | 'Top Rated';
+  badge?: 'Popular' | 'New' | 'Sale' | 'Top Rated' | 'Signature';
   discount?: number;
   difficulty: 'Easy' | 'Moderate' | 'Challenging';
   tags: string[];
@@ -59,6 +59,8 @@ export interface Tour {
   restaurants?: Restaurant[];
   foodAddOns?: FoodAddOn[];
   cuisineHighlights?: string[];
+  optionalExperiences?: string[];
+  perfectFor?: string[];
 }
 
 export interface Testimonial {
@@ -628,6 +630,100 @@ export const tours: Tour[] = [
     badge: "New",
     difficulty: "Easy",
     tags: ["nature", "botanical gardens", "cocoa", "waterfall", "eastern ghana", "eco"],
+  },
+  {
+    id: "t10",
+    title: "Return to the Motherland Experience",
+    slug: "return-to-the-motherland-experience",
+    location: "Accra, Volta, Ashanti & Central Regions",
+    country: "Ghana",
+    category: "Heritage",
+    price: 3995,
+    childPrice: 2995,
+    groupPrice: 3795,
+    duration: "12 Days",
+    durationDays: 12,
+    rating: 5.0,
+    reviewCount: 11,
+    maxGuests: 12,
+    image: "/tourist_site/Kwame/kwame-nkrumah-memorial.jpg",
+    gallery: [
+      "/tourist_site/Kwame/kwame-nkrumah-memorial.jpg",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=800&q=80",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80",
+      "/tourist_site/Cape Coast/the-world-famous-cape.jpg",
+      "/tourist_site/Kakum/caption (1).jpg",
+      "/tourist_site/Kwame/dr-kwame-nkrumah-s-mausoleum.jpg",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    ],
+    description: "Brownline Tours' signature heritage experience, designed for the African diaspora and cultural travelers seeking a deep, emotional, and educational connection with Ghana. Across 12 days, this journey blends history, royal culture, ancestral reflection, community engagement, and coastal beauty into one powerful homecoming — from the halls of Ghana's independence in Accra, to the waterfalls and lakes of the Volta Region, the royal courts of the Ashanti Kingdom, and the ancestral slave route along the Central coast.",
+    highlights: [
+      "Accra cultural and historical tour",
+      "Ghanaian cooking class experience",
+      "Cedi bead-making experience",
+      "Community immersion experience",
+      "Shai Hills wildlife experience",
+      "Wli Waterfalls (Upper & Lower Falls)",
+      "Volta Lake boat cruise in Akosombo",
+      "Ashanti Kingdom cultural experience",
+      "Kente weaving and Adinkra printing",
+      "Assin Manso ancestral heritage site",
+      "Kakum National Park canopy walkway",
+      "Elmina Castle historical tour",
+    ],
+    included: [
+      "Airport meet and greet",
+      "Private transportation throughout",
+      "4–5-star accommodation",
+      "Daily breakfast",
+      "Selected meals",
+      "Guided tours and entrance fees",
+      "Volta River cruise",
+      "Bottled water during tours",
+    ],
+    excluded: [
+      "International flights",
+      "Visa fees",
+      "Travel insurance",
+      "Personal expenses",
+      "Alcoholic beverages",
+      "Optional add-ons",
+      "Tips and gratuities",
+    ],
+    optionalExperiences: [
+      "Naming ceremony experience",
+      "Private photography packages",
+      "Spa and wellness treatments",
+      "Beachfront dining experiences",
+      "Cultural performances",
+      "Nightlife experiences in Accra",
+    ],
+    perfectFor: [
+      "African diaspora travelers",
+      "Heritage and cultural seekers",
+      "Families and groups",
+      "Solo travelers",
+      "Educational and emotional journey travelers",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival in Accra — Welcome to the Motherland", description: "Upon arrival at Kotoka International Airport, you will be warmly welcomed by the Brownline Tours team and transferred to your carefully selected 4–5-star hotel in Accra. The evening is for rest and recovery after your international journey." },
+      { day: 2, title: "Accra Heritage Discovery", description: "Explore Ghana's capital with visits to Kwame Nkrumah Memorial Park, Independence Square, Jamestown, and the Arts Centre for National Culture. Learn about Ghana's independence history, culture, and modern identity." },
+      { day: 3, title: "Ghanaian Cooking Class & Cultural Immersion", description: "Begin your deep cultural connection with a hands-on Ghanaian cooking class, where you learn how to prepare traditional dishes using local ingredients and authentic methods.", meals: ["Lunch (cooked by you)"] },
+      { day: 4, title: "Shai Hills & Volta Region Transfer", description: "Travel through scenic landscapes to Shai Hills Resource Reserve for a light safari and nature experience. Continue into the Volta Region and settle into your eco-lodge surrounded by nature." },
+      { day: 5, title: "Wli Waterfalls Experience", description: "Visit the spectacular Wli Waterfalls, the tallest waterfall in West Africa. Enjoy a guided forest hike and experience either the Upper or Lower Falls depending on preference." },
+      { day: 6, title: "Akosombo Lake Volta Experience", description: "Travel to Akosombo for a peaceful Volta River experience. Enjoy a scenic boat cruise on Lake Volta before checking into your lakeside accommodation." },
+      { day: 7, title: "Ashanti Kingdom Experience (Kumasi)", description: "Travel to Kumasi, the cultural heart of the Ashanti Kingdom. Visit the Manhyia Palace Museum and learn about Ashanti royalty, history, and traditions." },
+      { day: 8, title: "Ashanti Cultural Craft Experience", description: "Visit Adanwomase for Kente weaving and Ntonso for Adinkra symbol printing. Engage directly with master artisans and learn the meaning behind Ghana's most iconic cultural expressions." },
+      { day: 9, title: "Free Day in Kumasi — Relaxation & Optional Activities", description: "Enjoy a relaxed day at leisure. Optional activities include spa treatments, shopping, café visits, or exploring Lake Bosomtwe (optional add-on). This day allows rest and reflection." },
+      { day: 10, title: "Assin Manso & Coastal Transfer", description: "Travel through Ghana's forest belt with a stop at Assin Manso Ancestral Slave River Site, a deeply significant ancestral site. Continue to Elmina and check into your beachfront accommodation." },
+      { day: 11, title: "Kakum National Park & Elmina Heritage", description: "Visit Kakum National Park for the famous canopy walkway experience. Continue with a visit to Elmina Castle, reflecting on the transatlantic slave trade and ancestral history." },
+      { day: 12, title: "Return to Accra & Departure", description: "Travel back to Accra for final shopping, relaxation, or reflection. Later, transfer to Kotoka International Airport for your departure flight." },
+    ],
+    region: "Multi-Region",
+    badge: "Signature",
+    difficulty: "Moderate",
+    tags: ["heritage", "diaspora", "ancestral", "signature", "ghana", "multi-region", "homecoming"],
   },
 ];
 

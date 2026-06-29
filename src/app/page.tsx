@@ -1,4 +1,5 @@
 import HeroSection from "@/components/sections/HeroSection";
+import MotherlandExperienceSection from "@/components/sections/MotherlandExperienceSection";
 import StatsSection from "@/components/sections/StatsSection";
 import SignatureExperiencesSection from "@/components/sections/SignatureExperiencesSection";
 import FeaturedToursSection from "@/components/sections/FeaturedToursSection";
@@ -13,6 +14,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <MotherlandExperienceSection />
       <StatsSection />
       <SignatureExperiencesSection />
       <FeaturedToursSection />

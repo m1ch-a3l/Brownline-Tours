@@ -392,6 +392,36 @@ export default function TourDetailClient({ tour, related }: Props) {
                   </div>
                 )}
 
+                {/* Optional experiences */}
+                {tour.optionalExperiences && tour.optionalExperiences.length > 0 && (
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-800 mb-1">Optional Experiences</h2>
+                    <p className="text-slate-500 text-sm mb-4">Personalize your journey with these add-on experiences.</p>
+                    <div className="flex flex-wrap gap-2">
+                      {tour.optionalExperiences.map((exp) => (
+                        <span key={exp} className="flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1.5 rounded-full text-sm font-medium">
+                          ✨ {exp}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Perfect for */}
+                {tour.perfectFor && tour.perfectFor.length > 0 && (
+                  <div>
+                    <h2 className="text-xl font-bold text-slate-800 mb-4">Perfect For</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {tour.perfectFor.map((p) => (
+                        <div key={p} className="flex items-start gap-2">
+                          <Check size={16} className="text-amber-500 mt-0.5 shrink-0" />
+                          <span className="text-slate-600 text-sm">{p}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Pricing tiers */}
                 <div>
                   <h2 className="text-xl font-bold text-slate-800 mb-4">Pricing</h2>
