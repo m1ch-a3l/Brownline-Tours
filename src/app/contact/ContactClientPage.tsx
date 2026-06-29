@@ -5,28 +5,32 @@ import { MapPin, Phone, Mail, Clock, ChevronDown, ChevronUp, Check, Send } from 
 
 const faqs = [
   {
-    q: "Do I need a visa to visit Ghana?",
-    a: "Most nationalities require a visa to enter Ghana. Citizens of ECOWAS member states (e.g. Nigeria, Senegal) enter visa-free. We strongly recommend applying for your Ghana visa at least 6–8 weeks before travel. We can point you to the official Ghana Immigration Service portal and assist with any invitation letters needed.",
+    q: "Do I need a visa for Ghana?",
+    a: "Many visitors require a visa. Please check with the nearest Ghanaian embassy or consulate before travelling.",
   },
   {
-    q: "How far in advance should I book a tour?",
-    a: "We recommend booking at least 4–8 weeks in advance, especially for Mole National Park (limited lodge beds) and Cape Coast Castle heritage tours during peak season (November–March). Last-minute bookings are sometimes possible — contact us.",
+    q: "Can Brownline Tours arrange airport transfers?",
+    a: "Yes. Airport pickup and drop-off can be included in your package or arranged separately.",
   },
   {
-    q: "What is your cancellation policy?",
-    a: "Free cancellation up to 30 days before departure. 50% refund for cancellations 15–29 days before. No refund within 14 days of departure. We strongly recommend purchasing travel insurance to cover unexpected cancellations.",
+    q: "Is travel insurance required?",
+    a: "We strongly recommend comprehensive travel insurance for all guests.",
   },
   {
-    q: "Is Ghana safe to visit?",
-    a: "Ghana is one of the most politically stable and visitor-friendly countries in West Africa. Accra, Cape Coast, Kumasi, and the Volta Region are all considered safe for tourists. Our guides are locally based and always up to date on current conditions. We follow all Ghana Tourism Authority safety guidelines.",
+    q: "Can I customize my itinerary?",
+    a: "Yes. We specialize in private and tailor-made tours based on your interests, schedule, and budget.",
   },
   {
-    q: "What vaccinations do I need for Ghana?",
-    a: "Yellow fever vaccination is mandatory to enter Ghana (you must carry your Yellow Card). We also recommend hepatitis A, typhoid, and malaria prophylaxis. Consult your GP or a travel medicine clinic at least 6 weeks before departure.",
+    q: "What currency is used in Ghana?",
+    a: "The official currency is the Ghanaian Cedi (GHS). Major hotels and some businesses also accept international credit cards.",
   },
   {
-    q: "Do you accommodate dietary restrictions?",
-    a: "Absolutely. Ghanaian cuisine is naturally rich in plant-based options, and halal food is widely available across the north. We accommodate vegetarian, vegan, gluten-free, halal, and allergy requirements. Please inform us at booking and we'll ensure all partners are briefed.",
+    q: "What should I pack?",
+    a: "Light clothing, comfortable walking shoes, sunscreen, insect repellent, a hat, a reusable water bottle, and any personal medications.",
+  },
+  {
+    q: "Are your tours suitable for children?",
+    a: "Yes. Many of our tours are family-friendly. Please contact us to discuss the best options for your family.",
   },
 ];
 
@@ -179,7 +183,7 @@ export default function ContactClientPage() {
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-slate-700">Email</div>
-                    <div className="text-sm text-slate-500">hello@ghanaquest.com<br />bookings@ghanaquest.com</div>
+                    <div className="text-sm text-slate-500">brownlinetours@gmail.com</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

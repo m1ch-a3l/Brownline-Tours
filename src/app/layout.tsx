@@ -80,7 +80,7 @@ const organizationJsonLd = {
     addressCountry: "GH",
   },
   telephone: "+233247810448",
-  email: "hello@brownlinetours.com",
+  email: "brownlinetours@gmail.com",
   areaServed: "Ghana",
   sameAs: [],
 };

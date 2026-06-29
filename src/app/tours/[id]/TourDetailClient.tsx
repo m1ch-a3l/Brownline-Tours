@@ -894,7 +894,7 @@ export default function TourDetailClient({ tour, related }: Props) {
                       WhatsApp
                     </a>
                     <a
-                      href="mailto:hello@brownlinetours.com"
+                      href="mailto:brownlinetours@gmail.com"
                       className="flex-1 flex items-center justify-center gap-2 py-2.5 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 transition-colors"
                     >
                       <Mail size={14} className="text-amber-500" />

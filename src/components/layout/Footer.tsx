@@ -125,7 +125,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={14} className="text-amber-400 shrink-0" />
-                <span>hello@brownlinetours.com</span>
+                <span>brownlinetours@gmail.com</span>
               </div>
             </div>
             <div className="flex gap-2 mt-5">

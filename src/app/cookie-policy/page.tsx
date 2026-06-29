@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const EFFECTIVE_DATE = "18 May 2026";
 const COMPANY = "Brownline Tours Ghana Limited";
-const EMAIL = "privacy@brownlinetours.com";
+const EMAIL = "brownlinetours@gmail.com";
 
 export default function CookiePolicyPage() {
   return (
