@@ -11,7 +11,9 @@ const trustBadges = [
 ];
 
 export default function FeaturedToursSection() {
-  const featured = tours.slice(0, 6);
+  const signature = tours.filter((t) => t.badge === "Signature");
+  const rest = tours.filter((t) => t.badge !== "Signature");
+  const featured = [...signature, ...rest].slice(0, 6);
 
   return (
     <section className="py-20 bg-slate-50">

@@ -100,8 +100,8 @@ export default function WhyChooseSection() {
             {/* Founder image */}
             <div className="relative min-h-72 lg:min-h-full">
               <Image
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
-                alt="Kwame Asante — Brownline Tours Founder & Lead Guide"
+                src="/ceo-profile/WhatsApp Image 2026-06-28 at 12.48.58 PM (4).jpeg"
+                alt="Marven Brown — Founder & CEO, Brownline Tours"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -111,8 +111,8 @@ export default function WhyChooseSection() {
 
               {/* Credential badge */}
               <div className="absolute bottom-5 left-5 bg-amber-500 text-slate-900 rounded-xl px-4 py-2.5 shadow-lg">
-                <div className="text-xs font-bold uppercase tracking-wide">Lead Guide & Founder</div>
-                <div className="text-lg font-extrabold leading-tight">Kwame Asante</div>
+                <div className="text-xs font-bold uppercase tracking-wide">Founder & CEO</div>
+                <div className="text-lg font-extrabold leading-tight">Marven Brown</div>
               </div>
             </div>
 
@@ -127,19 +127,19 @@ export default function WhyChooseSection() {
                 <span className="text-amber-400">You're Trusting a Friend.</span>
               </h3>
               <p className="text-slate-300 leading-relaxed mb-4 text-[15px]">
-                I founded Brownline Tours in 2012 because I watched Ghana's extraordinary tourism potential
-                go unshared with the world. I'd spent years guiding — and I knew the Ghana most visitors
-                never see: the family compounds, the chief's palace, the woman who makes the best kelewele
-                in all of Accra.
+                I started Brownline Tours because I watched Ghana's extraordinary tourism potential go
+                unshared with the world. Guiding travelers across our forts and castles, the Ashanti
+                Kingdom, Volta landscapes, and northern cultural sites taught me what visitors truly
+                seek: authentic connection, not just sightseeing.
               </p>
               <p className="text-slate-300 leading-relaxed mb-8 text-[15px]">
-                When you travel with us, you travel with me and my team of 80 locally trained guides who
-                grew up in the places they show you. We don't just take you to Ghana — we take you inside it.
+                When you travel with us, you travel with me and a team that grew up in the places we
+                show you. We don't just take you to Ghana — we take you inside it.
               </p>
 
               {/* Credentials strip */}
               <div className="flex flex-wrap gap-3 mb-8">
-                {["12+ Years Experience", "Ghana Tourism Authority", "80 Certified Guides", "15,000+ Travelers Hosted"].map((c) => (
+                {["Heritage & Diaspora Tourism", "Eco-Conscious Travel", "Community-Based Experiences", "Personally Guided"].map((c) => (
                   <span
                     key={c}
                     className="text-xs font-semibold text-slate-300 border border-slate-600 bg-white/5 px-3 py-1.5 rounded-full"
