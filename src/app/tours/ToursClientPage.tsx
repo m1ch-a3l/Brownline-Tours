@@ -213,7 +213,7 @@ function ToursContent() {
 
       {/* ── Trust strip ── */}
       <div className="bg-white border-b border-slate-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {trustItems.map(({ icon: Icon, label, sub }) => (
               <div key={label} className="flex items-center gap-3">
