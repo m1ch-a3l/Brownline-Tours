@@ -7,8 +7,6 @@ import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
-  User,
-  Heart,
   Search,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -109,26 +107,6 @@ export default function Navbar() {
               >
                 <Search size={18} />
               </button>
-              <Link
-                href="/account"
-                className={cn(
-                  "p-2 rounded-lg hover:bg-white/10 transition-all",
-                  textColor
-                )}
-                aria-label="Wishlist"
-              >
-                <Heart size={18} />
-              </Link>
-              <Link
-                href="/account"
-                className={cn(
-                  "p-2 rounded-lg hover:bg-white/10 transition-all mr-2",
-                  textColor
-                )}
-                aria-label="Account"
-              >
-                <User size={18} />
-              </Link>
             </div>
 
             {/* Mobile toggle */}
@@ -165,16 +143,10 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="pt-2 border-t border-slate-100 flex gap-2">
-              <Link
-                href="/account"
-                className="flex-1 text-center py-2.5 border border-sky-600 text-sky-600 rounded-lg text-sm font-semibold hover:bg-sky-50"
-              >
-                My Account
-              </Link>
+            <div className="pt-2 border-t border-slate-100">
               <Link
                 href="/tours"
-                className="flex-1 text-center py-2.5 bg-sky-600 text-white rounded-lg text-sm font-semibold hover:bg-sky-700"
+                className="block text-center py-2.5 bg-sky-600 text-white rounded-lg text-sm font-semibold hover:bg-sky-700"
               >
                 View Tours
               </Link>
