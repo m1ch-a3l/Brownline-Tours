@@ -418,21 +418,28 @@ export default function TourDetailClient({ tour, related }: Props) {
                 {/* Pricing */}
                 <div>
                   <h2 className="text-xl font-bold text-slate-800 mb-4">Pricing</h2>
-                  <div className="border border-slate-200 rounded-xl p-5 flex items-center justify-between">
-                    <div>
-                      <div className="text-sm font-semibold text-slate-600 mb-0.5">Starting from</div>
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div className="border border-slate-200 rounded-xl p-5 text-center hover:border-amber-400 transition-colors">
+                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Single</div>
                       <div className="text-3xl font-extrabold text-amber-600">
                         {formatPrice(discountedPrice ?? tour.price)}
                       </div>
-                      <div className="text-xs text-slate-400 mt-0.5">per person — contact us for group rates</div>
+                      <div className="text-xs text-slate-400 mt-1">per person</div>
                     </div>
-                    <button
-                      onClick={() => setQuestionOpen(true)}
-                      className="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl text-sm transition-all"
-                    >
-                      Get a Quote
-                    </button>
+                    <div className="border border-slate-200 rounded-xl p-5 text-center hover:border-amber-400 transition-colors">
+                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Double</div>
+                      <div className="text-3xl font-extrabold text-amber-600">
+                        {formatPrice(tour.doublePrice)}
+                      </div>
+                      <div className="text-xs text-slate-400 mt-1">per person (sharing)</div>
+                    </div>
                   </div>
+                  <button
+                    onClick={() => setQuestionOpen(true)}
+                    className="w-full py-2.5 border border-slate-200 text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition-all text-sm"
+                  >
+                    Get a custom quote
+                  </button>
                 </div>
               </div>
             )}
