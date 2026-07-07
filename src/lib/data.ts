@@ -619,7 +619,7 @@ export const tours: Tour[] = [
     location: "Accra, Volta, Ashanti & Central Regions",
     country: "Ghana",
     category: "Heritage",
-    price: 4345,
+    price: 4990,
     doublePrice: 3995,
     duration: "12 Days",
     durationDays: 12,
