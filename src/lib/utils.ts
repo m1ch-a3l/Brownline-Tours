@@ -16,12 +16,10 @@ export function formatPrice(price: number, currency = "USD"): string {
 
 export function calculateTotalPrice(
   adultPrice: number,
-  childPrice: number,
   adults: number,
-  children: number,
   discount = 0
 ): number {
-  const subtotal = adultPrice * adults + childPrice * children;
+  const subtotal = adultPrice * adults ;
   return Math.round(subtotal * (1 - discount / 100));
 }
 
