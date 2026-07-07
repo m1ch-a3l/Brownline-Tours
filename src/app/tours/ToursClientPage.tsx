@@ -37,11 +37,6 @@ const trustItems = [
   { icon: Users,        label: "Expert Local Guides",  sub: "Certified & vetted" },
 ];
 
-// Tour count per region
-const regionCounts = tours.reduce<Record<string, number>>((acc, t) => {
-  acc[t.region] = (acc[t.region] ?? 0) + 1;
-  return acc;
-}, {});
 
 function ToursContent() {
   const searchParams = useSearchParams();
@@ -235,48 +230,6 @@ function ToursContent() {
         </div>
       </div>
 
-      {/* ── Region quick-select cards (only when no region is active) ── */}
-      {region === "All" && category === "All" && !search && (
-        <div className="bg-white border-b border-slate-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <div className="flex items-center gap-2 mb-3">
-              <MapPin size={13} className="text-amber-500" />
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Browse by Region</span>
-            </div>
-            <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
-              {ghanaRegions.map((r) => {
-                const Icon = REGION_ICONS[r.id] ?? MapPin;
-                return (
-                  <button
-                    key={r.id}
-                    onClick={() => setRegion(r.id)}
-                    className={`group relative flex-shrink-0 w-44 h-24 rounded-xl overflow-hidden shadow-sm border hover:shadow-md hover:scale-[1.02] transition-all duration-200 ${region === r.id ? "border-2 ring-2 ring-amber-400" : "border-slate-100"}`}
-                  >
-                    <img
-                      src={r.image}
-                      alt={r.name}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/15" />
-                    <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: r.accentColor }} />
-                    {/* Icon badge */}
-                    <div
-                      className="absolute top-2.5 left-2.5 w-7 h-7 rounded-lg flex items-center justify-center shadow"
-                      style={{ backgroundColor: r.accentColor }}
-                    >
-                      <Icon size={14} className="text-white" strokeWidth={2.5} />
-                    </div>
-                    <div className="absolute inset-0 flex flex-col justify-end p-2.5">
-                      <span className="text-white font-bold text-xs leading-tight">{r.name}</span>
-                      <span className="text-white/60 text-[10px] mt-0.5">{regionCounts[r.id] ?? 0} tours</span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* ── Main content ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -347,9 +300,6 @@ function ToursContent() {
                             />
                           </span>
                           {r.name}
-                        </span>
-                        <span className={`text-xs px-1.5 py-0.5 rounded-full ${active ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"}`}>
-                          {regionCounts[r.id] ?? 0}
                         </span>
                       </button>
                     );
