@@ -129,12 +129,6 @@ export default function Navbar() {
               >
                 <User size={18} />
               </Link>
-              <Link
-                href="/tours"
-                className="px-5 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold rounded-lg shadow-sm transition-all hover:shadow-md"
-              >
-                Book a Tour
-              </Link>
             </div>
 
             {/* Mobile toggle */}
@@ -182,7 +176,7 @@ export default function Navbar() {
                 href="/tours"
                 className="flex-1 text-center py-2.5 bg-sky-600 text-white rounded-lg text-sm font-semibold hover:bg-sky-700"
               >
-                Book a Tour
+                View Tours
               </Link>
             </div>
           </div>

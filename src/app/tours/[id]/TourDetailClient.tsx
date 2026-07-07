@@ -48,11 +48,6 @@ export default function TourDetailClient({ tour, related }: Props) {
   const prevPhoto = () => setLightboxIdx((i) => (i === null ? 0 : (i - 1 + tour.gallery.length) % tour.gallery.length));
   const nextPhoto = () => setLightboxIdx((i) => (i === null ? 0 : (i + 1) % tour.gallery.length));
 
-  // Booking sidebar state
-  const [adults, setAdults] = useState(2);
-  const [children, setChildren] = useState(0);
-  const [travelDate, setTravelDate] = useState("");
-
   // Ask a question modal
   const [questionOpen, setQuestionOpen] = useState(false);
   const [questionName, setQuestionName] = useState("");
@@ -105,8 +100,6 @@ export default function TourDetailClient({ tour, related }: Props) {
   const discountedPrice = tour.discount
     ? Math.round(tour.price * (1 - tour.discount / 100))
     : null;
-  const pricePerPerson = discountedPrice ?? tour.price;
-  const totalPrice = pricePerPerson * adults + tour.childPrice * children;
 
   // Fake tour reviews (reuse testimonials)
   const tourReviews = testimonials.slice(0, 4);
@@ -371,7 +364,7 @@ export default function TourDetailClient({ tour, related }: Props) {
                 {tour.foodAddOns && tour.foodAddOns.length > 0 && (
                   <div>
                     <h2 className="text-xl font-bold text-slate-800 mb-1">Food Experience Add-Ons</h2>
-                    <p className="text-slate-500 text-sm mb-4">Enhance your tour with optional culinary experiences. Add to your booking below.</p>
+                    <p className="text-slate-500 text-sm mb-4">Enhance your tour with optional culinary experiences.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {tour.foodAddOns.filter(Boolean).map((addon) => (
                         <div key={addon.id} className="border border-slate-200 rounded-xl p-4 hover:border-orange-300 hover:bg-orange-50 transition-all group">
@@ -388,7 +381,7 @@ export default function TourDetailClient({ tour, related }: Props) {
                         </div>
                       ))}
                     </div>
-                    <p className="text-xs text-slate-400 mt-3">Select add-ons on the booking page. All add-ons are subject to availability.</p>
+                    <p className="text-xs text-slate-400 mt-3">All add-ons are subject to availability. Contact us to include these in your itinerary.</p>
                   </div>
                 )}
 
@@ -422,21 +415,23 @@ export default function TourDetailClient({ tour, related }: Props) {
                   </div>
                 )}
 
-                {/* Pricing tiers */}
+                {/* Pricing */}
                 <div>
                   <h2 className="text-xl font-bold text-slate-800 mb-4">Pricing</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {[
-                      { label: "Adult", price: pricePerPerson, note: "Age 12+" },
-                      { label: "Child", price: tour.childPrice, note: "Age 4–11" },
-                      { label: "Group (10+)", price: tour.groupPrice, note: "Per person" },
-                    ].map((tier) => (
-                      <div key={tier.label} className="border border-slate-200 rounded-xl p-4 text-center hover:border-amber-400 transition-colors">
-                        <div className="text-sm font-semibold text-slate-600 mb-1">{tier.label}</div>
-                        <div className="text-2xl font-extrabold text-amber-600">{formatPrice(tier.price)}</div>
-                        <div className="text-xs text-slate-400">{tier.note}</div>
+                  <div className="border border-slate-200 rounded-xl p-5 flex items-center justify-between">
+                    <div>
+                      <div className="text-sm font-semibold text-slate-600 mb-0.5">Starting from</div>
+                      <div className="text-3xl font-extrabold text-amber-600">
+                        {formatPrice(discountedPrice ?? tour.price)}
                       </div>
-                    ))}
+                      <div className="text-xs text-slate-400 mt-0.5">per person — contact us for group rates</div>
+                    </div>
+                    <button
+                      onClick={() => setQuestionOpen(true)}
+                      className="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl text-sm transition-all"
+                    >
+                      Get a Quote
+                    </button>
                   </div>
                 </div>
               </div>
@@ -566,7 +561,7 @@ export default function TourDetailClient({ tour, related }: Props) {
             )}
           </div>
 
-          {/* Booking sidebar */}
+          {/* Enquire sidebar */}
           <div className="lg:w-80 shrink-0">
             <div className="sticky top-24 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
               <div className="bg-[#1A0D06] p-5 text-white">
@@ -580,114 +575,53 @@ export default function TourDetailClient({ tour, related }: Props) {
                   <span className="text-3xl font-extrabold text-amber-400">{formatPrice(tour.price)}</span>
                 )}
                 <div className="text-white/60 text-sm">per person</div>
-                {/* Trust micro-signals */}
                 <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-white/10">
-                  <span className="flex items-center gap-1 text-xs text-white/70"><Check size={11} className="text-emerald-400" /> Free cancellation</span>
                   <span className="flex items-center gap-1 text-xs text-white/70"><Check size={11} className="text-emerald-400" /> No hidden fees</span>
+                  <span className="flex items-center gap-1 text-xs text-white/70"><Check size={11} className="text-emerald-400" /> Personalised itineraries</span>
                 </div>
               </div>
 
-              <div className="p-5 space-y-4">
-                {/* Date */}
-                <div>
-                  <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider block mb-1.5">
-                    Travel Date
-                  </label>
-                  <div className="relative">
-                    <Calendar size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="date"
-                      value={travelDate}
-                      onChange={(e) => setTravelDate(e.target.value)}
-                      min={new Date().toISOString().split("T")[0]}
-                      className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100 transition-all"
-                    />
-                  </div>
-                </div>
+              <div className="p-5 space-y-3">
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Interested in this tour? Reach out to us directly and we&apos;ll personalise it for you.
+                </p>
 
-                {/* Guests */}
-                <div>
-                  <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider block mb-1.5">
-                    Guests
-                  </label>
-                  <div className="space-y-2">
-                    {[
-                      { label: "Adults", value: adults, set: setAdults, price: pricePerPerson },
-                      { label: "Children (4–11)", value: children, set: setChildren, price: tour.childPrice },
-                    ].map(({ label, value, set, price }) => (
-                      <div key={label} className="flex items-center justify-between">
-                        <div>
-                          <div className="text-sm font-medium text-slate-700">{label}</div>
-                          <div className="text-xs text-slate-400">{formatPrice(price)}/person</div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={() => set(Math.max(label === "Adults" ? 1 : 0, value - 1))}
-                            className="w-7 h-7 rounded-full border-2 border-slate-200 hover:border-amber-400 flex items-center justify-center text-slate-500 hover:text-amber-600 transition-all font-bold"
-                          >
-                            −
-                          </button>
-                          <span className="w-6 text-center font-semibold text-slate-800">{value}</span>
-                          <button
-                            onClick={() => set(Math.min(tour.maxGuests, value + 1))}
-                            className="w-7 h-7 rounded-full border-2 border-slate-200 hover:border-amber-400 flex items-center justify-center text-slate-500 hover:text-amber-600 transition-all font-bold"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Price summary */}
-                <div className="bg-slate-50 rounded-xl p-4 space-y-2">
-                  {adults > 0 && (
-                    <div className="flex justify-between text-sm text-slate-600">
-                      <span>{adults} × Adult</span>
-                      <span>{formatPrice(pricePerPerson * adults)}</span>
-                    </div>
-                  )}
-                  {children > 0 && (
-                    <div className="flex justify-between text-sm text-slate-600">
-                      <span>{children} × Child</span>
-                      <span>{formatPrice(tour.childPrice * children)}</span>
-                    </div>
-                  )}
-                  <div className="border-t border-slate-200 pt-2 flex justify-between font-bold text-slate-900">
-                    <span>Total</span>
-                    <span className="text-amber-600">{formatPrice(totalPrice)}</span>
-                  </div>
-                </div>
-
-                {/* Book button */}
-                <Link
-                  href={`/booking?tour=${tour.id}&adults=${adults}&children=${children}&date=${travelDate}`}
-                  className="block w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl text-center transition-all hover:shadow-lg uppercase tracking-wide"
-                >
-                  Book This Tour
-                </Link>
                 <button
                   onClick={() => setQuestionOpen(true)}
-                  className="w-full py-3 border-2 border-amber-500 text-amber-600 font-semibold rounded-xl hover:bg-amber-50 transition-all text-sm flex items-center justify-center gap-2"
+                  className="w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition-all hover:shadow-lg text-sm flex items-center justify-center gap-2"
                 >
                   <MessageCircle size={15} />
-                  Ask a Question
+                  Enquire About This Tour
                 </button>
 
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <Check size={12} className="text-emerald-500" />
-                  Free cancellation up to 30 days before departure
-                </div>
+                <a
+                  href="https://wa.me/233247810448"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 border-2 border-emerald-500 text-emerald-600 font-semibold rounded-xl hover:bg-emerald-50 transition-all text-sm flex items-center justify-center gap-2"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.859L.073 23.927l6.244-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.001-1.37l-.36-.213-3.707.972.989-3.614-.234-.371A9.793 9.793 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                  </svg>
+                  WhatsApp Us
+                </a>
 
-                {/* Why book with us */}
+                <a
+                  href="mailto:brownlinetours@gmail.com"
+                  className="w-full py-3 border-2 border-slate-200 text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition-all text-sm flex items-center justify-center gap-2"
+                >
+                  <Mail size={15} className="text-amber-500" />
+                  Email Us
+                </a>
+
                 <div className="border-t border-slate-100 pt-4 space-y-2.5">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Why Book With Us</p>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Why Travel With Us</p>
                   {[
-                    { icon: "🛡️", text: "Best price guaranteed — no hidden fees" },
                     { icon: "🌍", text: "Expert local Ghana guides, certified & vetted" },
                     { icon: "📞", text: "24/7 support before & during your trip" },
-                    { icon: "✈️", text: "12+ years operating in Ghana" },
+                    { icon: "🤝", text: "Fully customised, personally guided experiences" },
+                    { icon: "🌱", text: "Responsible travel supporting local communities" },
                   ].map(({ icon, text }) => (
                     <div key={text} className="flex items-start gap-2 text-xs text-slate-600">
                       <span className="shrink-0">{icon}</span>
@@ -782,13 +716,6 @@ export default function TourDetailClient({ tour, related }: Props) {
                   >
                     Done
                   </button>
-                  <Link
-                    href={`/booking?tour=${tour.id}`}
-                    className="px-6 py-2.5 border border-slate-200 text-slate-600 font-semibold rounded-xl text-sm hover:bg-slate-50 transition-colors"
-                    onClick={closeQuestion}
-                  >
-                    Book Now
-                  </Link>
                 </div>
               </div>
             ) : (
@@ -802,8 +729,8 @@ export default function TourDetailClient({ tour, related }: Props) {
                       "What's included in the price?",
                       "Is this suitable for children?",
                       "Do you offer group discounts?",
-                      "What's the best time to book?",
                       "Can I customise this itinerary?",
+                      "What's the best time to visit?",
                     ].map((q) => (
                       <button
                         key={q}

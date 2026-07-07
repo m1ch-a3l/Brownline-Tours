@@ -59,7 +59,6 @@ const footerLinks = {
     { href: "#",            label: "Travel Insurance" },
     { href: "#",            label: "Visa Information" },
     { href: "#",            label: "Cancellation Policy" },
-    { href: "/account",     label: "My Bookings" },
   ],
 };
 

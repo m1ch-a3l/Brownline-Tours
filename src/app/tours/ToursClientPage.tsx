@@ -31,7 +31,7 @@ const sortOptions = [
 ];
 
 const trustItems = [
-  { icon: ShieldCheck,  label: "Best Price Guarantee", sub: "No booking fees" },
+  { icon: ShieldCheck,  label: "Best Price Guarantee", sub: "Transparent pricing" },
   { icon: BadgePercent, label: "Free Cancellation",    sub: "On most tours"   },
   { icon: Headphones,   label: "24 / 7 Support",       sub: "Always reachable"},
   { icon: Users,        label: "Expert Local Guides",  sub: "Certified & vetted" },
