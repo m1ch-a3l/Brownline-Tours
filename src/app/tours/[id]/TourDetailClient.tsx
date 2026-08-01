@@ -385,21 +385,6 @@ export default function TourDetailClient({ tour, related }: Props) {
                   </div>
                 )}
 
-                {/* Optional experiences */}
-                {tour.optionalExperiences && tour.optionalExperiences.length > 0 && (
-                  <div>
-                    <h2 className="text-xl font-bold text-slate-800 mb-1">Optional Experiences</h2>
-                    <p className="text-slate-500 text-sm mb-4">Personalize your journey with these add-on experiences.</p>
-                    <div className="flex flex-wrap gap-2">
-                      {tour.optionalExperiences.map((exp) => (
-                        <span key={exp} className="flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1.5 rounded-full text-sm font-medium">
-                          ✨ {exp}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 {/* Perfect for */}
                 {tour.perfectFor && tour.perfectFor.length > 0 && (
                   <div>
@@ -570,7 +555,8 @@ export default function TourDetailClient({ tour, related }: Props) {
 
           {/* Enquire sidebar */}
           <div className="lg:w-80 shrink-0">
-            <div className="sticky top-24 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+            <div className="sticky top-24 flex flex-col gap-4">
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
               <div className="bg-[#1A0D06] p-5 text-white">
                 <div className="text-sm font-medium text-white/60 mb-1">Starting from</div>
                 {discountedPrice ? (
@@ -638,6 +624,25 @@ export default function TourDetailClient({ tour, related }: Props) {
                 </div>
               </div>
             </div>
+
+            {/* Flexible Travel Dates card — Ghana Heritage & Luxury Experience only */}
+            {tour.id === "t16" && <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-amber-500 text-lg">🗓️</span>
+                <h3 className="font-bold text-slate-800 text-sm">Flexible Travel Dates</h3>
+              </div>
+              <p className="text-slate-600 text-xs leading-relaxed mb-4">
+                This tour is available year-round and can be scheduled to suit your preferred dates, whether for festivals or quieter seasons. We will tailor your itinerary to ensure a seamless, high-quality experience with premium accommodation and personalised service.
+              </p>
+              <button
+                onClick={() => setQuestionOpen(true)}
+                className="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition-all text-xs flex items-center justify-center gap-2"
+              >
+                <MessageCircle size={13} />
+                Check Availability
+              </button>
+            </div>}
+            </div>{/* end sticky wrapper */}
           </div>
         </div>
 

@@ -6,6 +6,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import NextAuthProvider from "@/components/providers/SessionProvider";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import PromoBar from "@/components/ui/PromoBar";
+import FlyerModal from "@/components/ui/FlyerModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,6 +101,8 @@ export default function RootLayout({
         />
         <NextAuthProvider>
           <div className="min-h-screen flex flex-col">
+            <FlyerModal />
+            <PromoBar />
             <Navbar />
             <main className="flex-1 flex flex-col">{children}</main>
             <Footer />
