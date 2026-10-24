@@ -2,12 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 const destinations = [
-  { name: "Northern Region", region: "Mole National Park", tours: 3, image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80", href: "/tours?search=Northern" },
-  { name: "Central Region", region: "Cape Coast & Elmina", tours: 5, image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=600&q=80", href: "/tours?search=Central" },
-  { name: "Volta Region", region: "Waterfalls & Mountains", tours: 4, image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", href: "/tours?search=Volta" },
-  { name: "Ashanti Region", region: "Kumasi & Kente Culture", tours: 3, image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80", href: "/tours?search=Kumasi" },
-  { name: "Greater Accra", region: "Accra & Ada Foah", tours: 4, image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80", href: "/tours?search=Accra" },
-  { name: "Western Region", region: "Busua Beach & Rainforest", tours: 3, image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=600&q=80", href: "/tours?search=Busua" },
+  { name: "Northern Region", region: "Mole National Park", tours: 3, image: "/tourist_site/Mole/mole-national-park-is.jpg", href: "/tours?search=Northern" },
+  { name: "Central Region", region: "Cape Coast & Elmina", tours: 5, image: "/tourist_site/Cape Coast/the-world-famous-cape.jpg", href: "/tours?search=Central" },
+  { name: "Volta Region", region: "Waterfalls & Mountains", tours: 4, image: "/tourist_site/Volta/de.jpg", href: "/tours?search=Volta" },
+  { name: "Ashanti Region", region: "Kumasi & Kente Culture", tours: 3, image: "/tourist_site/Ashanti Region/IMG_5859-2-800x510.jpg", href: "/tours?search=Kumasi" },
+  { name: "Greater Accra", region: "Accra & Ada Foah", tours: 4, image: "/tourist_site/Kwame/kwame-nkrumah-memorial.jpg", href: "/tours?search=Accra" },
+  { name: "Western Region", region: "Busua Beach & Rainforest", tours: 3, image: "/tourist_site/Busua/busua-beach.jpg", href: "/tours?search=Busua" },
 ];
 
 export default function DestinationsSection() {

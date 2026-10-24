@@ -10,7 +10,7 @@ export default function CtaBannerSection() {
     <section className="relative py-28 overflow-hidden">
       {/* Background image */}
       <Image
-        src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1600&q=80"
+        src="/tourist_site/Mole/mole-national-park-is.jpg"
         alt="Ghana savanna — begin your journey"
         fill
         className="object-cover object-center"

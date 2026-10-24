@@ -132,7 +132,7 @@ function ToursContent() {
       {/* ── Page header ── */}
       <div className="relative pt-28 pb-16 px-4 overflow-hidden">
         <img
-          src={activeRegionMeta?.image ?? "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1600&q=80"}
+          src={activeRegionMeta?.image ?? "/tourist_site/Mole/mole-national-park-is.jpg"}
           alt=""
           aria-hidden
           className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700"

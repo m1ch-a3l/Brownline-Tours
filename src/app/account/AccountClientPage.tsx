@@ -101,7 +101,7 @@ export default function AccountClientPage() {
         {/* Left panel — brand */}
         <div className="hidden lg:flex lg:w-1/2 relative flex-col items-center justify-center p-12 overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&q=80"
+            src="/tourist_site/Mole/mole-national-park-is.jpg"
             alt="Ghana landscape"
             fill
             className="object-cover"

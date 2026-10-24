@@ -13,6 +13,7 @@ import { REGION_ICONS } from "@/components/sections/BrowseByRegionSection";
 interface TourCardProps {
   tour: Tour;
   view?: "grid" | "list";
+  showPrice?: boolean;
 }
 
 // Deterministic urgency signals based on tour data
@@ -26,7 +27,7 @@ function getUrgencySignal(tour: Tour): { icon: React.ReactNode; text: string; co
   return null;
 }
 
-export default function TourCard({ tour, view = "grid" }: TourCardProps) {
+export default function TourCard({ tour, view = "grid", showPrice = false }: TourCardProps) {
   const [wishlisted, setWishlisted] = useState(false);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ export default function TourCard({ tour, view = "grid" }: TourCardProps) {
                 {getBadgeLabel(tour.badge)}
               </span>
             )}
-            {tour.discount && (
+            {showPrice && tour.discount && (
               <span className="absolute top-3 right-3 bg-red-500 text-white text-xs font-extrabold px-2 py-0.5 rounded-full shadow">
                 -{tour.discount}% OFF
               </span>
@@ -94,17 +95,19 @@ export default function TourCard({ tour, view = "grid" }: TourCardProps) {
                     {tour.title}
                   </h3>
                 </div>
-                <div className="text-right shrink-0">
-                  {discountedPrice ? (
-                    <>
-                      <div className="text-slate-400 line-through text-sm">{formatPrice(tour.price)}</div>
-                      <div className="text-2xl font-extrabold text-amber-600">{formatPrice(discountedPrice)}</div>
-                    </>
-                  ) : (
-                    <div className="text-2xl font-extrabold text-amber-600">{formatPrice(tour.price)}</div>
-                  )}
-                  <div className="text-xs text-slate-400">per person</div>
-                </div>
+                {showPrice && (
+                  <div className="text-right shrink-0">
+                    {discountedPrice ? (
+                      <>
+                        <div className="text-slate-400 line-through text-sm">{formatPrice(tour.price)}</div>
+                        <div className="text-2xl font-extrabold text-amber-600">{formatPrice(discountedPrice)}</div>
+                      </>
+                    ) : (
+                      <div className="text-2xl font-extrabold text-amber-600">{formatPrice(tour.price)}</div>
+                    )}
+                    <div className="text-xs text-slate-400">per person</div>
+                  </div>
+                )}
               </div>
 
               {/* Location */}
@@ -177,19 +180,14 @@ export default function TourCard({ tour, view = "grid" }: TourCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
 
           {/* Discount ribbon */}
-          {tour.discount && (
+          {showPrice && tour.discount && (
             <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-extrabold px-3 py-1 rounded-bl-xl shadow">
               -{tour.discount}% OFF
             </div>
           )}
 
           {/* Badge */}
-          {tour.badge && !tour.discount && (
-            <span className={cn("absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white shadow", getBadgeColor(tour.badge))}>
-              {getBadgeLabel(tour.badge)}
-            </span>
-          )}
-          {tour.badge && tour.discount && (
+          {tour.badge && (
             <span className={cn("absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white shadow", getBadgeColor(tour.badge))}>
               {getBadgeLabel(tour.badge)}
             </span>
@@ -274,20 +272,27 @@ export default function TourCard({ tour, view = "grid" }: TourCardProps) {
           )}
 
           {/* Price + CTA */}
-          <div className="mt-auto pt-3 border-t border-slate-100 flex items-end justify-between gap-2">
-            <div>
-              <div className="text-[10px] text-slate-400 uppercase tracking-wide">From</div>
-              {discountedPrice ? (
-                <div className="flex items-baseline gap-1.5">
-                  <span className="text-xl font-extrabold text-amber-600">{formatPrice(discountedPrice)}</span>
-                  <span className="text-xs text-slate-400 line-through">{formatPrice(tour.price)}</span>
-                </div>
-              ) : (
-                <div className="text-xl font-extrabold text-amber-600">{formatPrice(tour.price)}</div>
+          <div className={cn("mt-auto pt-3 border-t border-slate-100 flex items-end gap-2", showPrice ? "justify-between" : "justify-stretch")}>
+            {showPrice && (
+              <div>
+                <div className="text-[10px] text-slate-400 uppercase tracking-wide">From</div>
+                {discountedPrice ? (
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-xl font-extrabold text-amber-600">{formatPrice(discountedPrice)}</span>
+                    <span className="text-xs text-slate-400 line-through">{formatPrice(tour.price)}</span>
+                  </div>
+                ) : (
+                  <div className="text-xl font-extrabold text-amber-600">{formatPrice(tour.price)}</div>
+                )}
+                <div className="text-[10px] text-slate-400">per person</div>
+              </div>
+            )}
+            <span
+              className={cn(
+                "shrink-0 px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-extrabold rounded-xl transition-colors shadow-sm uppercase tracking-wide whitespace-nowrap",
+                !showPrice && "w-full text-center"
               )}
-              <div className="text-[10px] text-slate-400">per person</div>
-            </div>
-            <span className="shrink-0 px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-extrabold rounded-xl transition-colors shadow-sm uppercase tracking-wide whitespace-nowrap">
+            >
               View Tour →
             </span>
           </div>

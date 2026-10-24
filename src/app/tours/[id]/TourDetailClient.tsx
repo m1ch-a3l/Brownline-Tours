@@ -33,9 +33,10 @@ import StarRating from "@/components/ui/StarRating";
 interface Props {
   tour: Tour;
   related: Tour[];
+  showPrice?: boolean;
 }
 
-export default function TourDetailClient({ tour, related }: Props) {
+export default function TourDetailClient({ tour, related, showPrice = false }: Props) {
   const [galleryIdx, setGalleryIdx] = useState(0);
   const [wishlisted, setWishlisted] = useState(false);
   const [openItinerary, setOpenItinerary] = useState<number | null>(0);
@@ -373,7 +374,9 @@ export default function TourDetailClient({ tour, related }: Props) {
                             <div className="flex-1">
                               <div className="flex items-center justify-between gap-2 mb-1">
                                 <span className="font-semibold text-slate-800 text-sm">{addon.name}</span>
-                                <span className="font-bold text-amber-600 text-sm shrink-0">+{formatPrice(addon.price)}{addon.perPerson ? "/pp" : ""}</span>
+                                {showPrice && (
+                                  <span className="font-bold text-amber-600 text-sm shrink-0">+{formatPrice(addon.price)}{addon.perPerson ? "/pp" : ""}</span>
+                                )}
                               </div>
                               <p className="text-slate-500 text-xs leading-relaxed">{addon.description}</p>
                             </div>
@@ -403,22 +406,28 @@ export default function TourDetailClient({ tour, related }: Props) {
                 {/* Pricing */}
                 <div>
                   <h2 className="text-xl font-bold text-slate-800 mb-4">Pricing</h2>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="border border-slate-200 rounded-xl p-5 text-center hover:border-amber-400 transition-colors">
-                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Single</div>
-                      <div className="text-3xl font-extrabold text-amber-600">
-                        {formatPrice(discountedPrice ?? tour.price)}
+                  {showPrice ? (
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <div className="border border-slate-200 rounded-xl p-5 text-center hover:border-amber-400 transition-colors">
+                        <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Single</div>
+                        <div className="text-3xl font-extrabold text-amber-600">
+                          {formatPrice(discountedPrice ?? tour.price)}
+                        </div>
+                        <div className="text-xs text-slate-400 mt-1">per person</div>
                       </div>
-                      <div className="text-xs text-slate-400 mt-1">per person</div>
-                    </div>
-                    <div className="border border-slate-200 rounded-xl p-5 text-center hover:border-amber-400 transition-colors">
-                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Double</div>
-                      <div className="text-3xl font-extrabold text-amber-600">
-                        {formatPrice(tour.doublePrice)}
+                      <div className="border border-slate-200 rounded-xl p-5 text-center hover:border-amber-400 transition-colors">
+                        <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Double</div>
+                        <div className="text-3xl font-extrabold text-amber-600">
+                          {formatPrice(tour.doublePrice)}
+                        </div>
+                        <div className="text-xs text-slate-400 mt-1">per person (sharing)</div>
                       </div>
-                      <div className="text-xs text-slate-400 mt-1">per person (sharing)</div>
                     </div>
-                  </div>
+                  ) : (
+                    <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                      Every tour is priced around your dates, group size and preferences. Send us a message and we&apos;ll prepare a quote for you.
+                    </p>
+                  )}
                   <button
                     onClick={() => setQuestionOpen(true)}
                     className="w-full py-2.5 border border-slate-200 text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition-all text-sm"
@@ -558,16 +567,25 @@ export default function TourDetailClient({ tour, related }: Props) {
             <div className="sticky top-24 flex flex-col gap-4">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
               <div className="bg-[#1A0D06] p-5 text-white">
-                <div className="text-sm font-medium text-white/60 mb-1">Starting from</div>
-                {discountedPrice ? (
-                  <div>
-                    <span className="text-3xl font-extrabold text-amber-400">{formatPrice(discountedPrice)}</span>
-                    <span className="text-white/40 line-through text-lg ml-2">{formatPrice(tour.price)}</span>
-                  </div>
+                {showPrice ? (
+                  <>
+                    <div className="text-sm font-medium text-white/60 mb-1">Starting from</div>
+                    {discountedPrice ? (
+                      <div>
+                        <span className="text-3xl font-extrabold text-amber-400">{formatPrice(discountedPrice)}</span>
+                        <span className="text-white/40 line-through text-lg ml-2">{formatPrice(tour.price)}</span>
+                      </div>
+                    ) : (
+                      <span className="text-3xl font-extrabold text-amber-400">{formatPrice(tour.price)}</span>
+                    )}
+                    <div className="text-white/60 text-sm">per person</div>
+                  </>
                 ) : (
-                  <span className="text-3xl font-extrabold text-amber-400">{formatPrice(tour.price)}</span>
+                  <>
+                    <div className="text-sm font-medium text-white/60 mb-1">Custom quotes</div>
+                    <div className="text-xl font-extrabold text-amber-400 leading-snug">Tailored to your dates and group</div>
+                  </>
                 )}
-                <div className="text-white/60 text-sm">per person</div>
                 <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-white/10">
                   <span className="flex items-center gap-1 text-xs text-white/70"><Check size={11} className="text-emerald-400" /> No hidden fees</span>
                   <span className="flex items-center gap-1 text-xs text-white/70"><Check size={11} className="text-emerald-400" /> Personalised itineraries</span>
@@ -657,7 +675,7 @@ export default function TourDetailClient({ tour, related }: Props) {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {related.map((t) => (
-                <TourCard key={t.id} tour={t} />
+                <TourCard key={t.id} tour={t} showPrice={showPrice} />
               ))}
             </div>
           </div>
