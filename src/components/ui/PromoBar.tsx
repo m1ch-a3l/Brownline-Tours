@@ -22,13 +22,13 @@ export default function PromoBar() {
   return (
     <div className="relative z-[60] bg-[#1A0D06] text-white text-sm">
       <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-center gap-3 flex-wrap">
-        <span className="text-white/80 text-xs">10-Day Ghana Heritage & December Experience — 22–31 Dec 2026</span>
+        <span className="text-white/80 text-xs">8 Days & 7 nights Decemnber in Ghana</span>
         <span className="hidden sm:inline text-white/40 text-xs">·</span>
         <span className="text-amber-300 font-bold text-xs flex items-center gap-1">
-          <Calendar size={11} /> From $4,550 / person
+          <Calendar size={11} /> From $1,700 / person
         </span>
         <Link
-          href="/tours/ghana-heritage-luxury-experience"
+          href="/tours/ghana-unfiltered"
           className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-xs px-3 py-1 rounded-full transition-colors shrink-0"
         >
           View Tour

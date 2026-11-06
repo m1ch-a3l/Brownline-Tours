@@ -1,6 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, ArrowRight, Users, MapPin } from "lucide-react";
+import { Calendar, ArrowRight, Users, MapPin, Check } from "lucide-react";
+
+const INCLUDES = [
+  "7 Nights' Accommodation",
+  "Airport Transfers",
+  "Comfortable Transportation",
+  "Daily Breakfast & Selected Meals",
+  "Cultural & Heritage Experiences",
+  "Guided Tours & Activities",
+  "Local Support & Professional Guides",
+];
+
+const THEMES = ["Culture", "Heritage", "Food", "Music", "Beaches", "Community"];
 
 export default function DecemberPromoSection() {
   return (
@@ -22,22 +34,30 @@ export default function DecemberPromoSection() {
           {/* Left — copy */}
           <div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5">
-              <span className="text-amber-400">10 Days</span> of<br />
-              Ghana Heritage &amp;<br />
-              December Magic.
+              <span className="text-amber-400">Ghana Unfiltered</span>
+              <br />
+              8 Days &amp; 7 Nights
+              <br />
+              December 2026.
             </h2>
 
-            <p className="text-white/65 leading-relaxed mb-8 text-base max-w-md">
-              An unforgettable journey through Ghana&apos;s rich heritage, vibrant culture,
-              breathtaking nature and warm hospitality — this December.
+            <p className="text-white/65 leading-relaxed mb-4 text-base max-w-md">
+              More than a holiday — it&apos;s a journey into the heart of Ghana.
+              From the vibrant streets of Accra to the historic shores of Cape Coast.
+              Real people, real culture, unforgettable experiences.
+            </p>
+
+            {/* Themes */}
+            <p className="text-amber-400/90 text-xs font-bold uppercase tracking-widest mb-6">
+              {THEMES.join(" · ")}
             </p>
 
             {/* Stat chips */}
-            <div className="flex flex-wrap gap-3 mb-10">
+            <div className="flex flex-wrap gap-3 mb-8">
               {[
-                { icon: Calendar, text: "22–31 Dec 2026",   color: "text-amber-400" },
-                { icon: MapPin,   text: "Across Ghana",     color: "text-emerald-400" },
-                { icon: Users,    text: "Small groups",     color: "text-sky-400" },
+                { icon: Calendar, text: "December 2026", color: "text-amber-400" },
+                { icon: MapPin,   text: "Across Ghana",  color: "text-emerald-400" },
+                { icon: Users,    text: "Guided tours",  color: "text-sky-400" },
               ].map(({ icon: Icon, text, color }) => (
                 <div key={text}
                   className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white border border-white/10"
@@ -48,12 +68,29 @@ export default function DecemberPromoSection() {
               ))}
             </div>
 
+            {/* Package includes */}
+            <div className="mb-8">
+              <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-3">
+                Package Includes
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                {INCLUDES.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-white/80 text-sm">
+                    <Check size={15} className="text-amber-400 mt-0.5 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Price highlight */}
             <div className="flex items-baseline gap-3 mb-8">
-              <span className="text-5xl font-extrabold text-amber-400">$4,550</span>
+              <span className="text-5xl font-extrabold text-amber-400">$1,700</span>
               <div>
-                <div className="text-white font-semibold text-sm">per person</div>
-                <div className="text-white/40 text-xs">double occupancy · 30% deposit secures your spot</div>
+                <div className="text-white font-semibold text-sm">per person sharing</div>
+                <div className="text-white/40 text-xs">
+                  30% deposit to book · balance due 30 days before departure
+                </div>
               </div>
             </div>
 
@@ -75,6 +112,14 @@ export default function DecemberPromoSection() {
                 WhatsApp to Book
               </a>
             </div>
+
+            <p className="text-white/40 text-xs mt-5">
+              +233 24 781 0448 ·{" "}
+              <a href="mailto:brownlinetours@gmail.com" className="hover:text-amber-400 transition-colors">
+                brownlinetours@gmail.com
+              </a>{" "}
+              · @brownlinetours
+            </p>
           </div>
 
           {/* Right — floating flyer */}
@@ -91,8 +136,8 @@ export default function DecemberPromoSection() {
                 style={{ filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.7))" }}>
                 <div className="rounded-2xl overflow-hidden ring-2 ring-amber-400/30">
                   <Image
-                    src="/Ads/December Tour.jpg.jpeg"
-                    alt="10 Days Ghana Heritage & December Experience — Brownline Tours"
+                    src="/Ads/GHANA UNFILTERED.jpg.jpeg"
+                    alt="Ghana Unfiltered — 8 Days, 7 Nights, December 2026 — Brownline Tours"
                     width={600}
                     height={800}
                     className="w-full h-auto"

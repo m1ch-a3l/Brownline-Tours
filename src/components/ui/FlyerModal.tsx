@@ -77,7 +77,7 @@ export default function FlyerModal() {
         {/* Flyer image */}
         <Link href="/tours/ghana-heritage-luxury-experience" onClick={close}>
           <Image
-            src="/Ads/December Tour.jpg.jpeg"
+            src="/Ads/GHANA UNFILTERED.jpg.jpeg"
             alt="10 Days Ghana Heritage & December Experience — Brownline Tours"
             width={500}
             height={700}
